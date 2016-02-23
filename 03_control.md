@@ -32,6 +32,7 @@ else
 end
 ~~~
 
+
 `while` loops are also available:
 
 ~~~nit
@@ -40,14 +41,14 @@ while i > 1 do
 	print "{i} bottles on the wall..."
 	i -= 1
 end
-print "1 last bolles on the wall..."
+print "1 last bottle on the wall..."
 ~~~
 
 
-`break` and `continue` can be used to control the exit path from loop.
+`break` and `continue` can be used to control the exit path from loops.
 
 
-Two other special control strucure are the `do` and the `loop`.
+Two other special control structure are the `do` and the `loop`.
 `do` is mainly used to scope local variables. It is also used to bound a `break`.
 
 ~~~nit
@@ -59,8 +60,8 @@ do
 end
 ~~~
 
-`loop` is used as a infinite loop. It usually requires some aditionnal explicit `break` to control the exit.
-It is used to impliment `do while/until` loops or `while` loops with a complex exit condition.
+`loop` is used as a infinite loop. It usually requires some additional explicit `break` to control the exit.
+It is used to implement `do while/until` loops or `while` loops with a complex exit condition.
 
 ~~~nit
 nb = 0
@@ -74,9 +75,13 @@ print "There was {nb} line(s)."
 
 
 
-## Exercise
+## Mission
+
+* Difficulty: tutorial
 
 White a loop that computes the first Fibonacci number above a given limit. 
+
+Confidential information: fib(0) = 0; fib(1) = 1; fib(n) = fib(n-1) + fib(n-2)
 
 ~~~nit
 var limit = 500
@@ -86,5 +91,11 @@ var n = 1
 
 # Code here
 
-print "The first Fibonacci number > {limit} is {n}"
+print "The first Fibonacci number > {limit} is {n}."
+~~~
+
+Expected output
+
+~~~
+The first Fibonacci number 500 is 610.
 ~~~

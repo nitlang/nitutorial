@@ -3,12 +3,16 @@
 Functions start with the `fun` keyword. Require a name, parameters (if any) and a return type (if any).
 
 ~~~nit
-fun presentation(name: String, age: Int)
+fun presentation(name: String, age: Int): String
 do
-	print "Hello, my name is {name} and I am {age}."
+	return "Hello, my name is {name} and I am {age}. I live in the Dome and I am an happy Citizen."
 end
 
-presentation("Alice", 21)
+print presentation("Alice", 21)
 ~~~
 
-## Exercise
+## Mission
+
+* Difficulty: tutorial
+
+

@@ -47,7 +47,27 @@ print three + hw
 # Type Error: expected `Int`, got `String`
 ~~~
 
-## Exercise
+
+Conversion between type can be achieved with special operations like `to_i`, `to_s`.
+
+Moreover, string expansion is available through the `{}` notation:
+
+~~~nit
+print "one plus one is {1+1}" # one plus one is 2
+print "10".to_i + 10 # 20
+print 10.to_s + "10" # 1010
+~~~
+
+Inside strings, `"` and `{` can be escaped with `\`. Or a triple quoted notation could be used.
+
+~~~nit
+print "\"quote\" and \{curly brackets\}"
+print """"quote" and {curly brackets}"""
+~~~
+
+## Mission
+
+* Difficulty: tutorial
 
 Define two variables, `a_string` and `an_integer` initialized respectively to `"ten"` and `10`.
 
@@ -57,6 +77,13 @@ var a_string = ?
 var an_integer = ?
 # Change above
 
-print "a_string? {a_string + ""}"
-print "an_integer? {an_integer + 0}"
+print "a_string! {a_string + "!"}"
+print "an_integer! {an_integer.factorial}"
+~~~
+
+Expected output
+
+~~~
+a_string! 10!
+an_integer! 3628800
 ~~~
