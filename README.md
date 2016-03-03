@@ -9,11 +9,17 @@ Basic:
 
 Fun:
 
-* nullable & adaptive typing
+* nullable & adaptive typing (liste?)
+* types virtuels (hier //)
+* covariance
 * OOP
 * HM
 * Class refinement
+	* debug/ stats
+	* -m empire
+	* visiteur
 * FFI C/C++/Java
+
 
 Lib:
 
@@ -25,3 +31,9 @@ Lib:
 Misc:
 
 * nitunit
+* nitcc
+
+Tool
+
+* annotation simple dans le compilo
+* metriques
