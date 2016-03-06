@@ -45,36 +45,6 @@ print "1 last bottle on the wall..."
 ~~~
 
 
-`break` and `continue` can be used to control the exit path from loops.
-
-
-Two other special control structure are the `do` and the `loop`.
-`do` is mainly used to scope local variables. It is also used to bound a `break`.
-
-~~~nit
-do
-	if a > 9000 then break # exit the block
-	print "It's over 9000!!!"
-	if name != "Goku" then break # exit the block
-	print "Big Bang Attack!"
-end
-~~~
-
-`loop` is used as a infinite loop. It usually requires some additional explicit `break` to control the exit.
-It is used to implement `do while/until` loops or `while` loops with a complex exit condition.
-
-~~~nit
-nb = 0
-loop
-	var line = gets
-	if line == "" then break
-	nb += 1
-end
-print "There was {nb} line(s)."
-~~~
-
-
-
 ## Mission
 
 * Difficulty: tutorial
@@ -83,19 +53,21 @@ White a loop that computes the first Fibonacci number above a given limit.
 
 Confidential information: fib(0) = 0; fib(1) = 1; fib(n) = fib(n-1) + fib(n-2)
 
+### Template to Use
+
 ~~~nit
 var limit = 500
 
 var prev = 0
 var n = 1
 
-# Code here
+# CODE HERE
 
 print "The first Fibonacci number > {limit} is {n}."
 ~~~
 
-Expected output
+### Expected output
 
 ~~~
-The first Fibonacci number 500 is 610.
+The first Fibonacci number > 500 is 610.
 ~~~

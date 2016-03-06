@@ -58,7 +58,7 @@ end
 The `isa` keyword can be used to test the dynamic type of an expression.
 If the expression is a variable, then its static type can be adapted.
 
-~~~
+~~~nit
 fun what_it_is(value: nullable Object)
 do
 	# `value` is a `nullable Object` that is the most general type is the type hierarchy of Nit.

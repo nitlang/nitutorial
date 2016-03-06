@@ -72,10 +72,10 @@ print """"quote" and {curly brackets}"""
 Define two variables, `a_string` and `an_integer` initialized respectively to `"ten"` and `10`.
 
 ~~~nit
-# Change bellow
+# CHANGE BELLOW
 var a_string = ?
 var an_integer = ?
-# Change above
+# CHANGE ABOVE
 
 print "a_string! {a_string + "!"}"
 print "an_integer! {an_integer.factorial}"

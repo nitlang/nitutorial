@@ -40,7 +40,9 @@ To prove your achievement, send us a program that output the traditional *Hello,
 A template is provided bellow.
 
 ~~~nit
+# CHANGE BELLOW
 print "Something, Something!"
+# CHANGE ABOVE
 ~~~
 
 Expected output

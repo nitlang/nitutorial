@@ -1,10 +1,9 @@
 # Collection and for loops
 
-
 In Nit there is various kind of collections.
 They are used to manipulate finite groups of objects.
 
-Because Nit is statically types, the type of the elements of a collection is available.
+Because Nit is statically typed, the type of the elements of a collection is statically known.
 
 The most common collection is `Array`.
 
@@ -36,25 +35,25 @@ print open # [10,11,12,13,14]
 ~~~
 
 
-The most common operation on range is to iterate on them.
+The most common operation on collections is to iterate on them.
 The `for` control structure just do that.
 
 ~~~nit
 for i in [0..5[ do print i # 0 1 2 3 4
+for i in [2, 3, 5] do print i # 2 3 5
 ~~~
-
 
 ## Mission
 
 * Difficulty: tutorial
 
 
-Write a function that outputs the numbers of a collection that are odd and lower than 42.
+Write a function that prints the numbers of a collection that are odd and lower than 42.
 
 ~~~nit
 fun filter(ints: Collection[Int])
 do
-# Your code here
+# CODE HERE
 end
 
 print "Test 1"
@@ -63,7 +62,7 @@ print "Test 2"
 filter([35..45])
 ~~~
 
-Expected output
+### Expected Output
 
 ~~~
 Test 1
