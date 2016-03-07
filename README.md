@@ -19,7 +19,9 @@ Fun:
 	* -m empire
 	* visiteur
 * FFI C/C++/Java
-
+	* utilise une lib
+* operateurs
+* or else
 
 Lib:
 
