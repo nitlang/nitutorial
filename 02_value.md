@@ -81,9 +81,9 @@ print "a_string! {a_string + "!"}"
 print "an_integer! {an_integer.factorial}"
 ~~~
 
-Expected output
+### Expected Output
 
 ~~~
-a_string! 10!
+a_string! ten!
 an_integer! 3628800
 ~~~

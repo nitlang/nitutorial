@@ -44,10 +44,16 @@ end
 print "1 last bottle on the wall..."
 ~~~
 
+`for` is an improved `while` that iterates on collections.
+They will be shown in a latter mission, for the moment, we will use them to iterate on ranges of integers.
+
+~~~nit
+for i in [0..5[ do print i ; 0 1 2 3 4 (5 is excluded)
+~~~
 
 ## Mission
 
-* Difficulty: tutorial
+* Difficulty: easy
 
 White a loop that computes the first Fibonacci number above a given limit. 
 

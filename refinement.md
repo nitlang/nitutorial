@@ -9,6 +9,8 @@ Refinement is modifying an existing methods and classes in a statistically and c
 * Override methods
 * New super-classes
 
+The keyword `redef` is used to declare that a class definition is a refinement.
+
 ~~~nit
 # Improve the class Int with a recursive Fibonacci function.
 redef class Int
@@ -38,6 +40,8 @@ This allows refiners to add additional behavior before and/or after the original
 For instance, the core method `run` is the one that control the main execution of a program.
 It is often refined to add additional behavior before and after the main program. 
 
+As with classes, the keyword `redef`
+
 ~~~nit
 redef fun run
 do
@@ -58,7 +62,8 @@ End program
 ~~~
 
 
-By default `super` will reuse all the original parameters, you can reuse them anyway.
+By default `super` will reuse all the original parameters, you can provide new one anyway.
+The types of the parameters and the return type are 
 
 ~~~nit
 redef fun print(value)
@@ -77,7 +82,7 @@ In order to encrypt future communication, refine the `print` method to print any
 
 Hint1: do not infinitely recurse
 
-Hint2: the module `cryto` provide a `rot(13)` method that can be applied on strings.
+Hint2: the module `crypto` provide a `rot(13)` method that can be applied on strings.
 
 ~~~nit
 import crypto

@@ -35,17 +35,17 @@ print "There was {nb} line(s)."
 
 ## Mission
 
-* Difficulty: ?
+* Difficulty: easy
 
 Finish the program that test the primality of some numbers.
 
 
 ~~~nit
-fun primes(limit: Int)
-do
-	for i in [2..limit] do
-		for j in [2..i[ do
-			if i % j == 0 then
+var limit = 20
+
+for i in [2..limit] do
+	for j in [2..i[ do
+		if i % j == 0 then
 # CHANGE BELLOW
 ...
 print "{i} is not prime."
@@ -54,25 +54,6 @@ print "{i} is prime."
 ...
 # CHANGE ABOVE
 end
-
-primes(20)
-~~~
-
-~~~sol
-fun primes(limit: Int)
-do
-for i in [2..limit] do
-	for j in [2..i[ do
-		if i % j == 0 then
-			print "{i} is not prime."
-			continue label		
-		end
-	end
-	print "{i} is prime."
-end label
-end
-
-primes(20)
 ~~~
 
 ### Expected Output
