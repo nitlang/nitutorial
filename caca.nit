@@ -1,4 +1,3 @@
-
 module caca is pkgconfig "caca"
 
 `{

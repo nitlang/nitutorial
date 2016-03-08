@@ -15,11 +15,12 @@ class Interp
 	do
 		x = (c.width / 2).to_f
 		y = (c.height / 2).to_f
+		print "center {x}, y{y}"
 	end
 
 	redef fun visit(node) do
 		node.accept(self)
-		print "{x}.{y} @ {angle}"
+		print "{x}, {y} @ {angle}"
 	end
 end
 
@@ -80,7 +81,7 @@ var node = t.work(text)
 var i = new Interp(c)
 i.enter_visit(node)
 
-c.put("Hello", 0, 0)
+c.put("Hello", 5, 0)
 d.refresh
 d.quit
 

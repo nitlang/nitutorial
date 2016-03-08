@@ -20,7 +20,67 @@ in_java
 in_objc
 ~~~
 
-Nit FFI is the easiest way 
+Nit FFI is the easiest way to wrap libraries and extern code in Nit.
+
+Advanced features include:
+
+* inclusion of global declrtation
+* automatic conversion  some Nit and native types
+* declaration of callback function to call nit method from within the native code.
+
+The following examble show how we can ust the C function `strchr` to search a character in a string.
+
+~~~nit
+# global FFI declaration are enclosed by `{ `}
+# Use them for #include and related things.
+
+`{
+#include <string.h>
+`}
+
+# Any class can be refined with FFI method.
+redef class String 
+	fun strchr(c: Char): Int import to_cstring `{
+		// Two parameter, `self` and `c`.
+		// `self` is an opaque type in the C side
+		// `c` is converted to the primitive `char`
+
+		// Because `strchr` need a `char*`, we must convert the opaque `self`
+		// to something usable.
+		// the `import` clause makes the method `to_cstring` available in C.
+		char *str = String_to_cstring(self);
+
+		// In Nit, `to_cstring` returns a `NativeString`.
+		// In C, `NativeString` are automatically converted to `char*`.
+		char *res = strchr(str, c);
+		if (res==NULL) return -1;
+		return res - str;
+	`}
+end
+
+print "Hello, World!".strchr('W')
+print "Hello, World!".strchr('*')
+~~~
+
+## Mission
+
+Refine the class `String` and add a method `fnmatch(pattern: String): Bool` that wrap the POSIX function `fnmatch` (Hint: `man fnmatch`)
+
+### Template to Use
+
+~~~
+# CODE HERE
+
+print "mpire.nit".fnmatch("*.nit")
+print "mpire.nit".fnmatch("*.zip")
+~~~
+
+### Expected Output
+
+~~~
+true
+false
+~~~
 
 
 ## Mission
