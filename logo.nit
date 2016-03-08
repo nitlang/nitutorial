@@ -82,5 +82,5 @@ i.enter_visit(node)
 
 c.put("Hello", 0, 0)
 d.refresh
-d.delete
+d.quit
 

@@ -16,7 +16,7 @@ end
 extern class CacaDisplay `{ caca_display_t* `}
 	new `{ return caca_create_display(NULL); `}
 
-	fun delete `{ 
+	fun quit `{
 	caca_event_t ev;
 	caca_get_event(self, CACA_EVENT_KEY_PRESS, &ev, -1);
 	caca_free_display(self); `}
@@ -25,12 +25,3 @@ extern class CacaDisplay `{ caca_display_t* `}
 
 	fun refresh `{ caca_refresh_display(self); `}
 end
-
-extern class CacaEvent `{ caca_event_t `}
-end
-
-var d = new CacaDisplay
-var c = d.canvas
-c.put("Hello", 0, 0)
-d.refresh
-d.delete
