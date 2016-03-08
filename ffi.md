@@ -20,5 +20,13 @@ in_java
 in_objc
 ~~~
 
+Nit FFI is the easiest way 
 
 
+## Mission
+
+Write a simple wrapper around [libcaca](http://caca.zoy.org/doxygen/libcaca/caca_8h.html) so that the follwing client behave correctly.
+
+~~~nit
+
+~~~
