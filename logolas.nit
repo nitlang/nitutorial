@@ -64,7 +64,14 @@ end
 
 var text = args.first.to_path.read_all
 
-var t = new TestParser_logolas
-var node = t.work(text)
+var l = new Lexer_logolas(text)
+var tokens = l.lex
+
+var p = new Parser_logolas
+p.tokens.add_all(tokens)
+
+var node = p.parse
+
 var i = new Interp
 i.enter_visit(node)
+print "({i.x},{i.y})"

@@ -1,6 +1,8 @@
-import logolas_test_parser
-import caca
+module logolas_caca
 
+import logolas_parser
+import logolas_lexer
+import caca
 
 class Interp
 	super Visitor
@@ -20,7 +22,7 @@ class Interp
 
 	redef fun visit(node) do
 		node.accept(self)
-		print "{x}, {y} @ {angle}"
+		#print "{x}, {y} @ {angle}"
 	end
 end
 
@@ -78,12 +80,14 @@ var text = args.first.to_path.read_all
 var d = new CacaDisplay
 var c = d.canvas
 
-var t = new TestParser_logolas
-var node = t.work(text)
+var l = new Lexer_logolas(text)
+var tokens = l.lex
+
+var p = new Parser_logolas
+p.tokens.add_all(tokens)
+var node = p.parse
+
 var i = new Interp(c)
 i.enter_visit(node)
-
-c.put("Hello", 5, 0)
 d.refresh
 d.quit
-
