@@ -19,8 +19,8 @@ cmds = cmd*;
 cmd =
 	// Arrow are for movement (forward, turn left, turn right)
 	{fw:} '⭡' n |
-	{tr:} '⮢' n |
-	{tl:} '⮣' n |
+	{tl:} '⮢' n |
+	{tr:} '⮣' n |
 	// Musical repeat sign is for repetition
 	// Warning, *repeat once* means *do it twice*!
 	{rp:} '𝄆' cmds '𝄇' n;
