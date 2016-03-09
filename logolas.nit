@@ -1,4 +1,4 @@
-import logo_test_parser
+import logolas_test_parser
 import caca
 
 
@@ -67,7 +67,7 @@ redef class Ncmd_rp
 	redef fun accept(v)
 	do
 		var n = n_n.value
-		for i in [0..n[ do v.enter_visit(n_cmds)
+		for i in [0..n] do v.enter_visit(n_cmds)
 	end
 end
 
@@ -76,7 +76,7 @@ var text = args.first.to_path.read_all
 var d = new CacaDisplay
 var c = d.canvas
 
-var t = new TestParser_logo
+var t = new TestParser_logolas
 var node = t.work(text)
 var i = new Interp(c)
 i.enter_visit(node)

@@ -1,16 +1,16 @@
 
-all: logo
+all: logolas
 
-logo: logo.nit logo_test_parser.nit
-	nitc logo.nit
+logolas: logolas.nit logolas_test_parser.nit
+	nitc logolas.nit
 
 
-logo_test_parser.nit: logo.sablecc
-	nitcc logo.sablecc
+logolas_test_parser.nit: logolas.sablecc
+	nitcc logolas.sablecc
 
-run: logo
-	./logo e1.logo
+run: logolas
+	./logolas e1.logolas
 
-tests: logo
-	echo "" | CACA_DRIVER=ncurses ./logo e1.logo > e1.out
+tests: logolas
+	echo "" | CACA_DRIVER=ncurses ./logolas e1.logolas > e1.out
 	cat -v e1.out
