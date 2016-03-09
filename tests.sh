@@ -5,7 +5,8 @@
 function get_template()
 {
 	input="$1"
-	for tmpl in tests/*.nit; do
+	for tmpl in `ls tests/*.nit | tac`; do
+		echo "$tmpl" >&2
 		./diff "$tmpl" "$input" || continue
 		echo "$tmpl"
 		return 0

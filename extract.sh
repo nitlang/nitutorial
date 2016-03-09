@@ -12,10 +12,12 @@ for i in "$@"; do
 	if ! grep -q '^\s*# CODE HERE\s*$' "$tmpl"; then
 		if ! grep -q '\s*# CHANGE BELLOW\s*$' "$tmpl"; then
 			echo "$i: no CODE HERE nor CHANGE BELLOW"
+			rm "$tmpl" "$res"
 			continue
 		fi
 		if ! grep -q '^# CHANGE ABOVE$' "$tmpl"; then
 			echo "$i: no CHANGE ABOVE"
+			rm "$tmpl" "$res"
 			continue
 		fi
 	fi

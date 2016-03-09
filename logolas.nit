@@ -1,3 +1,7 @@
+module logolas
+
+import logolas_parser
+import logolas_lexer
 import logolas_test_parser
 
 class Interp

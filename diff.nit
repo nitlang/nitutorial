@@ -7,23 +7,66 @@ var input = input_path.to_path.read_lines
 #print "tmpl:{tmpl.length}"
 #print "input:{input.length}"
 
-for line in [0..tmpl.length[ do
-	var tl = tmpl[line].trim
+var ili = 0
+for tli in [0..tmpl.length[ do
+
+	# Get template line
+	var tl = tmpl[tli].trim
 	if tl == "# CHANGE BELLOW" then break
+	if tl == "# CODE HERE" then break
+	if tl.is_empty then continue
 
-	if line >= input.length then exit 1
-	var il = input[line].trim
+	# Get input line
+	var il
+	loop
+		if ili >= input.length then
+			stderr.write "top: no more input line {ili} for the template line {tli}\n"
+			exit 1
+		end
+		il = input[ili].trim
+		if il.is_empty then
+			ili += 1
+			continue
+		end
+		break
+	end
 
-	if tl != il then exit 1
+	if tl != il then
+		stderr.write "top: different template line {tli} vs input {ili}. `{tl}` vs. `{il}`\n"
+		exit 1
+	end
+
+	ili += 1
 end
 
-for line in [0..tmpl.length[ do
-	var tl = tmpl[tmpl.length-1-line].trim
+ili = 0
+for tli in [0..tmpl.length[ do
+	# Get template line
+	var tl = tmpl[tmpl.length-1-tli].trim
 	if tl == "# CHANGE ABOVE" then break
+	if tl == "# CODE HERE" then break
+	if tl.is_empty then continue
 
-	if line >= input.length then exit 1
-	var il = input[input.length-1-line].trim
-	if tl != il then exit 1
+	# Get input line
+	var il
+	loop
+		if ili >= input.length then
+			stderr.write "bot: no more input line {ili} for the template line {tli}\n"
+			exit 1
+		end
+		il = input[input.length-1-ili].trim
+		if il.is_empty then
+			ili += 1
+			continue
+		end
+		break
+	end
+
+	if tl != il then
+		stderr.write "bop: different template line {tli} vs input {ili}. `{tl}` vs. `{il}`\n"
+		exit 1
+	end
+	ili += 1
 end
 
 exit 0

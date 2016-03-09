@@ -40,6 +40,7 @@ To prove your achievement, send us a program that output the traditional *Hello,
 A template is provided bellow.
 
 ~~~nit
+module hello
 # CHANGE BELLOW
 print "Something, Something!"
 # CHANGE ABOVE
