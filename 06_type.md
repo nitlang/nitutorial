@@ -91,9 +91,9 @@ module deep_first
 
 fun deep_first(a: Object): Object
 do
-	# CODE BELOW
+	# CHANGE BELLOW
 	... a isa Collection[Object] ...
-	# CODE ABOVE
+	# CHANGE ABOVE
 end
 
 var one = 1

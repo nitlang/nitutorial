@@ -3,6 +3,10 @@
 # This script is executed by the node engine
 # "$1" is the program tested.
 
+#set -e
+set -x
+
+
 # Return the template source file associated to the input file ($1)
 # If no template match, return the empty string.
 function get_template()
@@ -18,9 +22,6 @@ function get_template()
 	echo ""
 	return 1
 }
-
-#set -e
-#set -x
 
 arg="$1"
 dir=`dirname "$arg"`
@@ -46,7 +47,7 @@ function compile()
 
 function run()
 {
-	echo "" | timeout -k 3 3 firejail --quiet --profile=jail.profile --private="$bin" --quiet $@ | grep -v Firejail >> "$output"
+	echo "" | timeout -k 3 3 firejail --quiet --profile=jail.profile --private="$bin" --quiet $@ | grep -v Firejail | cat -v >> "$output"
 }
 
 function default()
@@ -62,6 +63,9 @@ bin="$dir/bin"
 mkdir -p "$bin"
 output="$dir/output"
 result="tmpls/$tmpl.res"
+
+export CACA_DRIVER=ncurses
+export CACA_GEOMETRY=40x20
 
 case "$tmpl" in
 	01_hello)
@@ -88,6 +92,10 @@ case "$tmpl" in
 		echo "UQAM{FLAG$tmpl}"
 		;;
 
+	04_function)
+		: # TODO
+		;;
+
 	05_collection)
 		file="filter.nit"
 		default &&
@@ -111,36 +119,66 @@ case "$tmpl" in
 		mv "$arg" "$dir/$file"
 		cp ../args.nit "$dir"
 		compile args.nit -m "$file"
+		diff -u "$result" "$output" >&2 &&
+		echo "UQAM{FLAG$tmpl}"
 		;;
 
+	refinement)
+		file="crypto13.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
+		;;
+	
+	bool_eval)
+		file="bool_eval.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
+		;;
+
+	nitcc)
+		: # FLAG IS MD5
+		;;
 	
 	nitcc_2)
 		file="logolas.nit"
 		mv "$arg" "$dir/$file"
-		cp ../*.logolas "$bin" 
 		cp ../logolas_parser.nit ../logolas_test_parser.nit ../logolas_lexer.nit "$dir" 
+		cp ../*.logolas "$bin" 
 		compile "$file" &&
 		run ./logolas maenas.logolas &&
 		run ./logolas elen.logolas &&
 		run ./logolas bar.logolas &&
 		diff -u "$result" "$output" >&2 &&
-		echo "UQAM{FLAG}"
+		echo "UQAM{FLAG$tmpl}"
+		;;
+
+	ffi)
+		file="fnmatch"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
+		;;
+	
+	ffi2)
+		file="caca.nit"
+		mv "$arg" "$dir/$file"
+		cp ../caca_client.nit "$dir" 
+		compile "caca_client.nit" &&
+		run "caca_client" &&
+		diff -u "$result" "$output" >&2 &&
+		echo "UQAM{FLAG$tmpl}"
 		;;
 
 	logolas_caca)
-		export CACA_DRIVER=ncurses
-		export CACA_GEOMETRY=40x20
 		file="logolas_caca.nit"
 		mv "$arg" "$dir/$file"
-		cp ../*.logolas "$bin" 
 		cp ../logolas_parser.nit ../logolas_test_parser.nit ../logolas_lexer.nit ../caca.nit "$dir" 
+		cp ../*.logolas "$bin" 
 		compile "$file" &&
 		run ./logolas_caca maenas.logolas &&
 		run ./logolas_caca elen.logolas &&
 		run ./logolas_caca bar.logolas &&
-		cat -v "$output" > "$output"2 &&
-		diff -u "$result" "$output"2 >&2 &&
-		echo "UQAM{FLAG}"
+		diff -u "$result" "$output" >&2 &&
+		echo "UQAM{FLAG$tmpl}"
 		;;
 
 	*)

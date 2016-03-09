@@ -61,8 +61,15 @@ print args.join(", ")
 
 You mission it to write a mixin module that will change the behavior of this program so it prints "`Y0u, 4r3, H4cK3d`" instead.
 
-~~~
+### Template to Use
+
+~~~nit
 module hacker
 # CODE HERE
 ~~~
 
+### Expected Output
+
+~~~
+Y0u, 4r3, H4cK3d
+~~~

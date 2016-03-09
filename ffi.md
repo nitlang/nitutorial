@@ -66,7 +66,7 @@ Refine the class `String` and add a method `fnmatch(pattern: String): Bool` that
 
 ### Template to Use
 
-~~~
+~~~nit
 module fnmatch
 
 # CODE HERE
