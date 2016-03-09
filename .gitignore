@@ -1,2 +1,6 @@
 nit_compile
 tests/
+*.dot
+*.out
+*_lexer.nit
+*_parser.nit
