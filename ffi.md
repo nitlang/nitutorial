@@ -1,9 +1,9 @@
 # Foreign Function Interface
 
-The Nit Foreign Function Interface (FFI) allows to nest code within a Nit source file.
-Current supported languages are C, C++, Java (used maily for android) and Objective C (used mainly for iOS).
+The Nit Foreign Function Interface (FFI) allows to nest foreign code within a Nit source file.
+Current supported languages are C, C++, Java (used mainly for android support) and Objective C (used mainly for iOS support).
 
-Common use cases of the FFI is to optimize a method or wrap existing system or third-party libraries.
+Common use cases of the FFI is to optimize a method or to wrap existing system or third-party libraries.
 The syntax use back-quoted curly-brackets.
 
 ~~~nit
@@ -20,15 +20,13 @@ in_java
 in_objc
 ~~~
 
-Nit FFI is the easiest way to wrap libraries and extern code in Nit.
+Advanced features of the Nit FFI include:
 
-Advanced features include:
+* inclusion of global declarations
+* automatic conversion between some Nit and foreign types
+* declaration of callback functions to call Nit method from within the foreign code.
 
-* inclusion of global declrtation
-* automatic conversion  some Nit and native types
-* declaration of callback function to call nit method from within the native code.
-
-The following examble show how we can ust the C function `strchr` to search a character in a string.
+The following example shows how can the C function `strchr` be used to search a character in a string.
 
 ~~~nit
 # global FFI declaration are enclosed by `{ `}
@@ -80,13 +78,4 @@ print "mpire.nit".fnmatch("*.zip")
 ~~~
 true
 false
-~~~
-
-
-## Mission
-
-Write a simple wrapper around [libcaca](http://caca.zoy.org/doxygen/libcaca/caca_8h.html) so that the follwing client behave correctly.
-
-~~~nit
-
 ~~~

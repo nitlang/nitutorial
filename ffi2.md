@@ -1,14 +1,14 @@
 # Wrapping Libraries
 
-Nit can provide an automatic wrapping of extern date structure as classes.
-Theses class are declared `extern`.
+Nit can provide an automatic wrapping of extern data structures as classes.
+Theses classes are declared `extern`.
 
-The goal of extern class is to describe data that live in the foreign language.
+The goal of extern classes is to describe data that live in the foreign language.
 Like a normal class, an extern class can define, inherit and redefine methods.
-Methods can event be foreign or pure Nit.
-The only restriction is that extern class cannot have attributes (data lives in the foreight world) and can only specializes interfaces or other extern classes.
+Methods can even be foreign or pure Nit.
+The only restriction is that extern class cannot have attributes (data lives in the foreign world) and can only specializes interfaces or other extern classes.
 
-The advantage of extern class is that the values are no more opaque in the exterm methods.
+The advantage of extern class is that the values are no more opaque in extern methods.
 When an extern class is used to type a parameter or the return value of an extern method,
 then the value is directly accessible.
 
@@ -52,6 +52,7 @@ Some included foreign code may require specific flag to compile them.
 These flags can be declared in the module declaration.
 
 Most of the time for C and C++ foreign code, the tool `pkg-config` can be used to correctly get these flags.
+`nitc` simplify the process for you.
 
 ~~~nit
 module curl is pkgconfig
@@ -65,13 +66,15 @@ Write a simple wrapper around [libcaca](http://caca.zoy.org/doxygen/libcaca/caca
 
 You need to wrap the following:
 
-* `` as `CadaDisplay`
-* `` as `CadaDisplay::display`
-* `` as `CadaDisplay::refresh`
-* `` as `CacaCanvas`
-* `` as `CacaCanvas::put`
+* `caca_display_t` as `CadaDisplay`
+* `caca_get_canvas` as `CadaDisplay::canvas`
+* `caca_refresh_display` as `CadaDisplay::refresh`
+* `caca_canvas_t` as `CacaCanvas`
+* `caca_put_str` as `CacaCanvas::put`
 
 Also add a `CadaDisplay::quit` that waits for any input event then destroy the display.
+
+Here an example of a working client.
 
 ~~~nit
 module caca_client
@@ -85,7 +88,7 @@ d.refresh
 d.quit
 ~~~
 
-Look at the tutorial and the header file for information.
+Look at the [caca tutorial](http://caca.zoy.org/doxygen/libcaca/libcaca-tutorial.html) and the [caca header file](http://caca.zoy.org/doxygen/libcaca/caca_8h.html) for more information.
 
 ### Template to Use
 
@@ -97,4 +100,4 @@ module caca is pkgconfig
 
 ### Expected Result
 
-A window with "Hello, World!" at (5,1)
+A window with "Hello, World!" at (5,1) when executing `caca_client` with your lib.
