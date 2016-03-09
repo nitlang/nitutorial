@@ -3,8 +3,16 @@
 Nit can provide an automatic wrapping of extern date structure as classes.
 Theses class are declared `extern`.
 
-The goal of extern class is to.
-Like a normal class, an extern class can define, inehrit and redefine methods, foreign ou pure Nit.
+The goal of extern class is to describe data that live in the foreign language.
+Like a normal class, an extern class can define, inherit and redefine methods.
+Methods can event be foreign or pure Nit.
+The only restriction is that extern class cannot have attributes (data lives in the foreight world) and can only specializes interfaces or other extern classes.
+
+The advantage of extern class is that the values are no more opaque in the exterm methods.
+When an extern class is used to type a parameter or the return value of an extern method,
+then the value is directly accessible.
+
+The foreign type is indicated after the class name with the now traditional back-quoted curly-bracket notation.
 
 ~~~nit
 `{
@@ -29,7 +37,8 @@ extern class CDir `{ DIR* `}
 end
 
 # Simple client
-# Disclaimer: Usually it is a better idea to add another API level to avoid to manipulate 
+# Disclaimer: Usually it is often a better idea to add another API level to avoid
+# the direct manipulation of foreign values.
 var dir = new CDir(".".to_cstring)
 loop
 	var ent = dir.readdir
@@ -39,10 +48,10 @@ end
 dir.closedir
 ~~~
 
-Some included foreign code my require specific flag to compile them.
+Some included foreign code may require specific flag to compile them.
 These flags can be declared in the module declaration.
 
-Most of the time, the tool `pkg-config` can be used to correctly get these flags.
+Most of the time for C and C++ foreign code, the tool `pkg-config` can be used to correctly get these flags.
 
 ~~~nit
 module curl is pkgconfig
