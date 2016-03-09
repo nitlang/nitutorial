@@ -4,9 +4,9 @@ We found an ancient language called Nit. Historian say that if was the most popu
 A lot of dome life systems and security protocol are based on Nit. This may be our chance!
 We need you to master this language!
 
-According to apocryphal documentation, Nit is a statically typed language that aims at elegance, simplicity and intuitiveness.  
+According to apocryphal documentation, Nit is a statically typed language that aims at elegance, simplicity and intuitiveness.
 
-For instance, `print` is a function that print something at the screen
+For instance, `print` is a function that print something at the screen.
 
 ~~~nit
 print "I print therefore I am."
@@ -19,7 +19,7 @@ Moreover, if the source code has the right permissions and starts with `#!/usr/b
 
 ~~~
 $ cat rene.nit
-#!/usri/bin/env nit
+#!/usr/bin/env nit
 print "I print therefore I am."
 $ nitc rene.nit
 $ ./rene

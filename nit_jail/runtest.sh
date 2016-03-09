@@ -20,7 +20,7 @@ function get_template()
 }
 
 #set -e
-set -x
+#set -x
 
 arg="$1"
 dir=`dirname "$arg"`
@@ -37,16 +37,25 @@ fi
 
 function compile()
 {
-	file="$1"
-	(
-		cd "$dir"
-		nitc --no-color "$file" --dir bin || exit 1
-	)
+	cd "$dir"
+	nitc --no-color "$@" --dir bin
+	res=$?
+	cd "$OLDPWD"
+	test "$res" = "0"
 }
 
 function run()
 {
 	echo "" | timeout -k 3 3 firejail --quiet --profile=jail.profile --private="$bin" --quiet $@ | grep -v Firejail >> "$output"
+}
+
+function default()
+{
+
+	mv "$arg" "$dir/$file"
+	compile "$file" &&
+	run ./`basename "$file" .nit` &&
+	diff -u "$result" "$output" >&2
 }
 
 bin="$dir/bin"
@@ -56,19 +65,61 @@ result="tmpls/$tmpl.res"
 
 case "$tmpl" in
 	01_hello)
-		file="$dir/hello.nit"
-		mv "$arg" "$dir/hello.nit"
-		compile "hello.nit" &&
-		run ./hello &&
-		diff -u "$result" "$output" >&2 &&
-		echo "UQAM{FLAG}"
+		file="hello.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
+		;;
+
+	02_value)
+		file="value.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
+		;;
+
+	03_control)
+		file="fibonnaci.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
+		;;
+
+	03b_control)
+		file="prime.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
+		;;
+
+	05_collection)
+		file="filter.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
+		;;
+
+	06_type)
+		file="deep_first.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
 		;;
 	
+	class)
+		file="helloo.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
+		;;
+	
+	module)
+		file="hacker.nit"
+		mv "$arg" "$dir/$file"
+		cp ../args.nit "$dir"
+		compile args.nit -m "$file"
+		;;
+
+	
 	nitcc_2)
-		mv "$arg" "$dir/logolas.nit"
+		file="logolas.nit"
+		mv "$arg" "$dir/$file"
 		cp ../*.logolas "$bin" 
 		cp ../logolas_parser.nit ../logolas_test_parser.nit ../logolas_lexer.nit "$dir" 
-		compile "logolas.nit" &&
+		compile "$file" &&
 		run ./logolas maenas.logolas &&
 		run ./logolas elen.logolas &&
 		run ./logolas bar.logolas &&
@@ -79,10 +130,11 @@ case "$tmpl" in
 	logolas_caca)
 		export CACA_DRIVER=ncurses
 		export CACA_GEOMETRY=40x20
-		mv "$arg" "$dir/logolas_caca.nit"
+		file="logolas_caca.nit"
+		mv "$arg" "$dir/$file"
 		cp ../*.logolas "$bin" 
 		cp ../logolas_parser.nit ../logolas_test_parser.nit ../logolas_lexer.nit ../caca.nit "$dir" 
-		compile "logolas_caca.nit" &&
+		compile "$file" &&
 		run ./logolas_caca maenas.logolas &&
 		run ./logolas_caca elen.logolas &&
 		run ./logolas_caca bar.logolas &&

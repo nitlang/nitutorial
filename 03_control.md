@@ -1,8 +1,8 @@
 # Control Structures and conditions
 
-Usual control structure, like condition and loops, are available.
+Usual control structures, like conditions and loops, are available.
 
-Most of them exists in two flavor: one-liner and multi-line.
+Most of them exists in two flavors: one-liner and multi-line.
 
 The one-liner flavor needs a single statement just after the control.
 
@@ -10,7 +10,7 @@ The one-liner flavor needs a single statement just after the control.
 if a > 9000 then print "It's over 9000!!!"
 ~~~
 
-The multi-line flavor have a line-return after the control but require a `end` keyword.
+The multi-line flavor has a line-return after the control but requires a `end` keyword.
 
 ~~~nit
 if a > 9000 then
@@ -20,7 +20,7 @@ end
 ~~~
 
 
-The `if` control accepts `else` block.
+The `if` control accepts an optional `else` block.
 
 ~~~nit
 if a > 9000 then
@@ -48,7 +48,7 @@ print "1 last bottle on the wall..."
 They will be shown in a latter mission, for the moment, we will use them to iterate on ranges of integers.
 
 ~~~nit
-for i in [0..5[ do print i ; 0 1 2 3 4 (5 is excluded)
+for i in [0..5[ do print i # 0 1 2 3 4 (5 is excluded)
 ~~~
 
 ## Mission
@@ -62,6 +62,8 @@ Confidential information: fib(0) = 0; fib(1) = 1; fib(n) = fib(n-1) + fib(n-2)
 ### Template to Use
 
 ~~~nit
+module fibonnacci
+
 var limit = 500
 
 var prev = 0

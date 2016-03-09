@@ -51,6 +51,8 @@ for i in [2, 3, 5] do print i # 2 3 5
 Write a function that prints the numbers of a collection that are odd and lower than 42.
 
 ~~~nit
+module filter
+
 fun filter(ints: Collection[Int])
 do
 # CODE HERE

@@ -3,7 +3,12 @@
 `break` and `continue` can be used to control the exit path from loops.
 
 ~~~nit
-var limit = 30
+for i in [0..50[ do
+	if i == 2 then continue
+	if i == 5 then break
+	print i
+end
+# output 0 1 3 4
 ~~~
 
 Two other special control structure are the `do` and the `loop`.
@@ -12,9 +17,9 @@ Two other special control structure are the `do` and the `loop`.
 
 ~~~nit
 do
-	if a > 9000 then break # exit the block
+	if level > 9000 then break # exit the block
 	print "It's over 9000!!!"
-	if name != "Goku" then break # exit the block
+	if not opponent.is_android then break # exit the block
 	print "Big Bang Attack!"
 end
 ~~~
@@ -41,6 +46,8 @@ Finish the program that test the primality of some numbers.
 
 
 ~~~nit
+module prime
+
 var limit = 20
 
 for i in [2..limit] do
@@ -53,7 +60,6 @@ print "{i} is not prime."
 print "{i} is prime."
 ...
 # CHANGE ABOVE
-end
 ~~~
 
 ### Expected Output

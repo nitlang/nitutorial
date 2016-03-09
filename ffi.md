@@ -67,6 +67,8 @@ Refine the class `String` and add a method `fnmatch(pattern: String): Bool` that
 ### Template to Use
 
 ~~~
+module fnmatch
+
 # CODE HERE
 
 print "mpire.nit".fnmatch("*.nit")

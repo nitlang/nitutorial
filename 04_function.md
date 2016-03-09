@@ -13,7 +13,7 @@ print presentation("Alice", 21)
 
 ## Default Argument Values
 
-Default arguments value rely on the `nullable` information: trailing null in a call can be omitted, thus
+Default arguments value rely on the `nullable` information: trailing null in a call can be omitted.
 
 ~~~
 fun presentation(name: String, age: nullable Int): String
@@ -63,6 +63,7 @@ print presentation("Alice", "Bob", "Dylan")
 
 
 ~~~nit
+module function
 
 # CODE HERE
 

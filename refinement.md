@@ -85,6 +85,8 @@ Hint1: do not infinitely recurse
 Hint2: the module `crypto` provide a `rot(13)` method that can be applied on strings.
 
 ~~~nit
+module crypto13
+
 import crypto
 
 redef fun print(value)

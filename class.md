@@ -1,19 +1,11 @@
 # Classes and OOP
 
-Nit is a pure Object-Oriented language.
-
-This means that any value manipulated is an object (even primitive values like integers).
-
-Nit is also pure Class-Oriented.
-
-This means that any object is the instance of a class and that any sub-program executed is a method defined in a class.
-
 ## Classes and Methods
 
 Nit tries to be POLA in defining classes.
 
 Classes are defined with the keyword `class`, super-classes are indicated with `super` (multiple inheritance is allowed), methods are introduced with `fun` and overridden with `redef fun`.
-Instantiation is done with `new`
+Instantiation is done with `new`.
 
 ~~~nit
 class Movie
@@ -73,6 +65,8 @@ Write a class `Goodby` with an attribute `hello: Hello`, and a method `say` that
 ### Template do Use
 
 ~~~nit
+module helloo
+
 # CODE HERE
 
 var h = new Hello("World")

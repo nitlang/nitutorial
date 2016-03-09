@@ -1,8 +1,6 @@
 # Modules
 
-Source files are called *modules*.
-
-Nit source files are called modules.
+Nit source files are called *modules*.
 A module can define classes and methods, can import classes and method of imported modules and can refine them.
 
 The keyword `module` can be used to declare a module. It is optional but when given, the module name must match the filename.
@@ -20,11 +18,12 @@ print "Hello, World!"
 # I don't know why you say hello, I say goodbye
 module goodbye
 import hello
-super # Yes, the main can also be refined!
+
+super # Call the previous `main`
 print "Goodbye, World!"
 ~~~
 
-Since a single class or method can be refined by multiple modules, Nit promotes Concern-Oriented Development where each module ideally operates on a single concern.
+Nit promotes Concern-Oriented Development where each module ideally operates on a single concern.
 A Nit program is just a module that imports all the required concerns.
 
 Moreover, importation of modules can be done and configured at link-time (with `-m` and `-D`) to generate specific configurations of a product line.

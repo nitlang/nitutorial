@@ -100,4 +100,4 @@ module caca is pkgconfig
 
 ### Expected Result
 
-A window with "Hello, World!" at (5,1) when executing `caca_client` with your lib.
+A window with "Hello, World!" at (5,1) when executing `caca_client` compiled with your lib.

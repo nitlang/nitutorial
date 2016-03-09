@@ -1,6 +1,10 @@
 # Values and Types
 
-Nit is a full Object-Oriented, it means that any value manipulated is an object (even primitive value like integers). Nit is also Class-Oriented, it means that any object is the instance of a class.
+Nit is a full Object-Oriented.
+It means that any value manipulated is an object (even primitive value like integers).
+
+Nit is also Class-Oriented.
+It means that any object is the instance of a class.
 
 Nit is also fully statically typed.
 It means that any expression, local variable, parameter, returns value and attributes of instance has a static type that documents and controls what kind of values are expected.
@@ -24,7 +28,7 @@ For instance, the type system will prevent a tired programmer to add Booleans:
 var j = true
 print j + 1
 #       ^
-# Compilation Error: Error: method `+` does not exists in `Bool`.
+# Compilation Error: method `+` does not exists in `Bool`.
 ~~~
 
 Beside integers (`Int`) and Booleans (`Bool`), the core library defines a lot of other classes like `String` and `Float`.
@@ -72,6 +76,8 @@ print """"quote" and {curly brackets}"""
 Define two variables, `a_string` and `an_integer` initialized respectively to `"ten"` and `10`.
 
 ~~~nit
+module value
+
 # CHANGE BELLOW
 var a_string = ?
 var an_integer = ?
