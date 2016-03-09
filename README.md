@@ -1,45 +1,39 @@
 
-Tutorial:
+
+## Tutorial (tronc principal)
 
 * [01_hello.md]
 * [02_value.md]
-* [03_control.md]
-* [04_]
+* [03_control.md] puis [03b_control.md]
+* [04_function.md] TODO
+* [05_collection.md]
+* [06_type.md]
+* [class.md]
+* [module.md] puis [refinement.md]
 
-* class
-* module
+## Branche Logolas
 
-* ffi fnmatch []
-* ffi2 caca []
+* [visitor.md]
+* [nitcc.md] puis [nitcc_2.md]
 
-* visitor
-* nitcc
-* nitcc2
+flag pour nitcc: `UQAM{38039c412028daccec4763d44f6f24c7}`
 
-* legolas_caca
- 
+## Branche Caca
 
-Basic:
+* [ffi.md] puis [ffi2.md]
 
-* hello
-* value
-* control
-* function
-* Collection & for
+## Noeud final
 
-Fun:
+neccesite les deux branches
 
-* nullable & adaptive typing (liste?)
+* [legolas_caca.md]
+
+
+## Idees en vrac mais pas le temps :/
+
 * types virtuels (hier //)
 * covariance
-* OOP
 * HM
-* Class refinement
-	* debug/ stats
-	* -m empire
-	* visiteur
-* FFI C/C++/Java
-	* utilise une lib
 * operateurs
 * or else
 
@@ -53,7 +47,6 @@ Lib:
 Misc:
 
 * nitunit
-* nitcc
 
 Tool
 
