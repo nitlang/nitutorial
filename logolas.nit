@@ -13,7 +13,7 @@ class Interp
 
 	redef fun visit(node) do
 		node.accept(self)
-		print "{x}, {y} @ {angle}"
+		#print "{x}, {y} @ {angle}"
 	end
 end
 
