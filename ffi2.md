@@ -22,7 +22,7 @@ The foreign type is indicated after the class name with the now traditional back
 
 extern class CDir `{ DIR* `}
         # Open a directory
-        new opendir(path: NativeString) `{ return opendir(path); `}
+        new(path: NativeString) `{ return opendir(path); `}
 
         # Close a directory
         fun closedir `{ closedir(self); `}
@@ -42,7 +42,7 @@ end
 var dir = new CDir(".".to_cstring)
 loop
 	var ent = dir.readdir
-	if ent.is_null then break
+	if ent.address_is_null then break
 	print ent.to_s
 end
 dir.closedir

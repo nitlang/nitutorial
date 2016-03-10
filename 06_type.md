@@ -8,7 +8,7 @@ To accept `null`, the static type must be extended with the `nullable` keyword.
 
 ~~~nit
 var a: Int = 10            # OK
-var b: nullable Int = 1)   # OK
+var b: nullable Int = 1    # OK
 var c: nullable Int = null # OK
 var d: Int = null # NOT OK
 #            ^
@@ -36,6 +36,8 @@ do
 	# Here, `value` is a `Int`. It's *adaptive typing*!
 	return value * 2
 end
+print double(null)
+print double(10)
 ~~~
 
 Adaptive typing correctly handle independent assignments.
@@ -52,6 +54,8 @@ do
 	# Here `value` is Int
 	return value * 3
 end
+print triple(null)
+print triple(10)
 ~~~
 
 
@@ -73,11 +77,14 @@ do
 		print "It's the integer {value}, the one that follows {value-1}."
 		# Because `value` is an `Int`, `value-1` is accepted
 	else if value isa String then
-		print "It's the string {value}, made of {value.length} charcters."
+		print "It's the string `{value}`, made of {value.length} charcters."
 	else
 		print "Whathever it is, I do not care."
 	end
 end
+what_it_is 5
+what_it_is "five"
+what_it_is true
 ~~~
 
 ## Mission

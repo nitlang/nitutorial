@@ -28,7 +28,7 @@ end
 It is used to implement `do while/until` loops or `while` loops with a complex exit condition.
 
 ~~~nit
-nb = 0
+var nb = 0
 loop
 	var line = gets
 	if line == "" then break

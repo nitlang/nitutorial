@@ -104,12 +104,19 @@ You can see that the visitor can be created after the data-classes without alter
 Let's now implement some visitor that count the number of binary operations in an expression.
 
 ~~~
-module bool_count
+module bool_counter
 
 import bool_visitor
 
 class BoolCounter
-	super Visitor
+	super BoolVisitor
+
+	fun count(expr: BoolExpr): Int
+	do
+		cpt = 0
+		visit(expr)
+		return cpt
+	end
 
 	redef fun visit(expr) do
 		# Call the specific count code
@@ -134,9 +141,9 @@ end
 var e1 = new BoolOr(new BoolAnd(new BoolTrue, new BoolFalse), new BoolNot(new BoolTrue))
 var e2 = new BoolAnd(new BoolNot(e1), new BoolTrue)
 
-var ev = new BoolCounter
-print ev.eval(e1) # write 2
-print ev.eval(e2) # write 3
+var v = new BoolCounter
+print v.count(e1) # 2
+print v.count(e2) # 3
 ~~~
 
 

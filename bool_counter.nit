@@ -36,5 +36,5 @@ var e1 = new BoolOr(new BoolAnd(new BoolTrue, new BoolFalse), new BoolNot(new Bo
 var e2 = new BoolAnd(new BoolNot(e1), new BoolTrue)
 
 var v = new BoolCounter
-print v.count(e1)
-print v.count(e2)
+print v.count(e1) # 2
+print v.count(e2) # 3

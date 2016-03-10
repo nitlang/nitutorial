@@ -7,15 +7,15 @@ Most of them exists in two flavors: one-liner and multi-line.
 The one-liner flavor needs a single statement just after the control.
 
 ~~~nit
-if a > 9000 then print "It's over 9000!!!"
+if level > 9000 then print "It's over 9000!!!"
 ~~~
 
 The multi-line flavor has a line-return after the control but requires a `end` keyword.
 
 ~~~nit
-if a > 9000 then
+if level > 9000 then
 	print "It's over 9000!!!"
-	print "What?! Nine thousand?!"
+	print "- What?! Nine thousand?!"
 end
 ~~~
 
@@ -23,9 +23,9 @@ end
 The `if` control accepts an optional `else` block.
 
 ~~~nit
-if a > 9000 then
+if level > 9000 then
 	print "It's over 9000!!!"
-else if a > 1000 then
+else if level > 1000 then
 	print "It's over 1000..."
 else
 	print "It's not impressive."

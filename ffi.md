@@ -56,8 +56,8 @@ redef class String
 	`}
 end
 
-print "Hello, World!".strchr('W')
-print "Hello, World!".strchr('*')
+print "Hello, World!".strchr('W') # 7
+print "Hello, World!".strchr('*') # -1
 ~~~
 
 ## Mission

@@ -15,7 +15,7 @@ The keyword `redef` is used to declare that a class definition is a refinement.
 # Improve the class Int with a recursive Fibonacci function.
 redef class Int
    fun fib: Int do
-      if self <= 2 then return self
+      if self < 2 then return self
       return (self - 1).fib + (self - 2).fib
    end
 end

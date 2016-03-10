@@ -41,7 +41,7 @@ class Inventory # à la Prévert
 	var another_string = "houses"
 	init do print "{an_int} {a_string}, {another_int} {another_string}..."
 end
-var i = new Inventory("1", "stone") # initialize `an_int` and `a_string` and call `init`. So print "1 stone, 2 houses..."
+var i = new Inventory(1, "stone") # initialize `an_int` and `a_string` and call `init`. So print "1 stone, 2 houses..."
 ~~~
 
 Subclasses inherit the attributes and the constructor behavior and `init` are automatically linked (in fact there is an implicit `super`).
