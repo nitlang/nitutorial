@@ -1,16 +1,16 @@
 # Values and Types
 
-Nit is a full Object-Oriented.
-It means that any value manipulated is an object (even primitive value like integers).
+Nit is a full Object-Oriented language.
+It means that any value is an object (even primitive value like integers).
 
 Nit is also Class-Oriented.
-It means that any object is the instance of a class.
+It means that any object is an instance of a class.
 
 Nit is also fully statically typed.
-It means that any expression, local variable, parameter, returns value and attributes of instance has a static type that documents and controls what kind of values are expected.
+It means that any expression, local variable, parameter, return value and attribute of instance has a static type that documents and controls what kind of values are expected.
 
 Local variables are used to hold values.
-To use variable you must declare them (with the `var` keyword).
+To use variables you must declare them (with the `var` keyword).
 You can assign them (with `=`) and use them in expression.
 
 ~~~nit
