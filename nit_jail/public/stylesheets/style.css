@@ -1,0 +1,391 @@
+body {
+	background:
+	radial-gradient(black 15%, transparent 16%) 0 0,
+	radial-gradient(black 15%, transparent 16%) 8px 8px,
+	radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+	radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+	background-color:#1d1d1d;
+	background-size:16px 16px;
+	background-attachment: fixed;
+	color: #fff;
+}
+
+a {
+  color: #c83127;
+}
+
+a:hover {
+	color: #ff0000;
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: uppercase;
+	color: #c83127;
+	font-weight: bold;
+}
+
+/* Tables */
+
+.table-hover>tbody>tr:hover {
+	background-color: rgba(150, 150, 150, 0.2);
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    border-top: 1px solid rgba(221, 221, 221, 0.5);
+}
+
+.table>tbody>tr.success>th, .table>tbody>tr.success>td { background-color: rgba(30, 100, 0, 0.2); }
+tr.success a, tr.success a { color: #3c763d; }
+tr.success i { color: #3c763d; }
+tr.success a:hover, tr.success a:hover { color: #419C00; }
+.table>tbody>tr.danger>th, .table>tbody>tr.danger>td { background-color: rgba(120, 30, 30, 0.2); }
+tr.danger i { color: #c83127; }
+tr.locked i { color: #888; }
+
+.table .progress { margin-bottom: 0}
+.panel-heading .progress { margin-bottom: 10px}
+
+/* Progressbars */
+
+.progress {
+    background-color: rgba(30,30,30,0.5);
+}
+
+.progress-bar-success {
+	background-color: rgba(90, 180, 90, 0.5);
+}
+
+.progress-bar-danger {
+	background-color: rgba(220, 80, 80, 0.9);
+}
+
+/* Forms */
+
+.form-control, .btn {
+	background-color: rgba(150, 150, 150, 0.2);
+	color: #fff;
+}
+
+/* Panels */
+
+.panel-default {
+	background-color: rgba(150, 150, 150, 0.1);
+	border-color: rgba(150, 150, 150, 0.1);
+}
+
+.panel-default .panel-heading {
+	color: #eee;
+	background-color: rgba(150, 150, 150, 0.1);
+	border-color: rgba(150, 150, 150, 0.1);
+}
+
+.panel-primary {
+	background-color: rgba(50, 120, 180, 0.1);
+	border-color: rgba(50, 120, 180, 0.1);
+}
+
+.panel-primary .panel-heading {
+	color: #eee;
+	background-color: rgba(50, 120, 180, 0.1);
+	border-color: rgba(50, 120, 180, 0.1);
+}
+
+.panel-danger {
+	background-color: rgba(180, 50, 50, 0.1);
+	border-color: rgba(180, 50, 50, 0.1);
+}
+
+.panel-danger .panel-heading {
+	color: #eee;
+	background-color: rgba(180, 50, 50, 0.1);
+	border-color: rgba(180, 50, 50, 0.1);
+}
+
+
+.panel-warning {
+	background-color: rgba(255, 180, 0, 0.1);
+	border-color: rgba(255, 180, 0, 0.1);
+}
+
+.panel-warning .panel-heading {
+	color: #eee;
+	background-color: rgba(255, 180, 0, 0.1);
+	border-color: rgba(255, 180, 0, 0.1);
+}
+
+.panel-success {
+	background-color: rgba(50, 180, 50, 0.1);
+	border-color: rgba(50, 180, 50, 0.1);
+}
+
+.panel-success .panel-heading {
+	color: #eee;
+	background-color: rgba(50, 180, 50, 0.1);
+	border-color: rgba(50, 180, 50, 0.1);
+}
+
+.panel-success a { color: #27C854; }
+.panel-success a:hover { color: #5BFF27; }
+.panel-success h1, .panel-success h2, .panel-success h3, .panel-success h4 { color: #27C854; }
+
+.panel-rebels {
+	background-color: rgba(150, 150, 150, 0.1);
+	padding-bottom: 5px;
+	border: 3px solid #000;
+    border-radius: 0;
+}
+
+.panel-logo {
+	opacity: 0.8;
+	background-color: transparent;
+	border-color: transparent;
+}
+
+/* messages */
+
+.alert .close {
+	color: #fff;
+}
+
+.alert-danger {
+    color: #fff;
+    background-color: rgba(255,0,0,0.3);
+    border-color: rgba(255, 0, 0, 0.7);
+}
+
+.alert-success {
+    color: #fff;
+    background-color: rgba(0, 255, 0, 0.3);
+    border-color: rgba(0, 255, 0, 0.7);
+}
+
+.alert-warning {
+    color: #fff;
+    background-color: rgba(255, 255, 0, 0.3);
+    border-color: rgba(255, 255, 0, 0.7);
+}
+
+
+/* mission tree */
+
+.mission-tree {
+	width: 100%;
+	height: 100%;
+}
+
+svg {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.mission-tree text {
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.mission-tree .node g div {
+	width: 40px;
+	height: 40px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.mission-tree .node rect {
+	stroke-width: 2px;
+	stroke: #bbb;
+	fill: #666;
+}
+
+.mission-tree .node.closed rect {
+	stroke: rgba(0, 255, 0, 0.80);
+	fill: rgba(0, 255, 0, 0.50);
+}
+
+.mission-tree .node.open rect {
+	stroke: rgba(255, 0, 0, 0.80);
+	fill: rgba(255, 0, 0, 0.50);
+}
+
+.mission-tree .node.locked rect {
+	stroke: rgba(150, 150, 150, 0.80);
+	fill: rgba(150, 150, 150, 0.50);
+}
+
+.mission-tree .edgePath path {
+	stroke-width: 2px;
+}
+
+.mission-tree .edgePath.closed path {
+	stroke: rgba(0, 255, 0, 0.80);
+	fill: rgba(0, 255, 0, 0.80);
+}
+
+.mission-tree .edgePath.open path {
+	stroke: rgba(255, 0, 0, 0.80);
+	fill: rgba(255, 0, 0, 0.80);
+}
+
+.mission-tree .edgePath.locked path {
+	stroke: rgba(150, 150, 150, 0.80);
+	fill: rgba(150, 150, 150, 0.80);
+}
+
+.mission-tree .number {
+	line-height: 40px;
+	font-size: 12px;
+}
+
+.mission-tree .glyphicon {
+	position: inherit;
+	font-size: 2em;
+	line-height: 40px;
+	padding-left: 0.1em;
+	color: rgba(30, 30, 30, 0.5)
+}
+
+.mission-tip.mission-open h3 { color: #c83127; }
+.mission-tip.mission-open .tip-status { color: #c83127; }
+.mission-tip.mission-closed h3 { color: #3c763d; }
+.mission-tip.mission-closed .tip-status { color: #3c763d; }
+.mission-tip.mission-locked h3 { color: #777; }
+.mission-tip.mission-locked .tip-status { color: #777; }
+.mission-tip .tip-reward { color: green; }
+
+.mission-icon {
+	width: 100%;
+}
+
+pre, code {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0.7);
+}
+
+/* score graph */
+
+#scoregraph .domain {
+	display: none;
+}
+
+#scoregraph .tick text {
+	fill: #ffffff;
+	margin-right: 10px;
+}
+
+#scoregraph .tick line {
+	stroke: #fff;
+    stroke-width: 1px;
+	opacity: 0.5;
+}
+
+#scoregraph .team-line {
+	fill: none;
+	stroke-width: 3px;
+	opacity: 0.7;
+}
+
+#scoregraph .team-line:hover {
+	stroke-width: 5px;
+	opacity: 1.0;
+}
+
+#scoregraph .score-dot {
+	fill: #000;
+	stroke: #fff;
+    stroke-width: 2px;
+	opacity: 0.7;
+	cursor: pointer;
+}
+
+#scoregraph .score-dot:hover {
+	fill: #ffd100;
+	stroke: #fff;
+    stroke-width: 2px;
+	opacity: 1.0;
+}
+
+#scoregraph .team-lbl {
+	fill: #ffffff;
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+.d3-tip {
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+}
+
+/* players */
+
+.player-rank {
+	opacity: 0.8;
+}
+
+.player-rank-xs {
+	width: 20px;
+	height: 20px;
+}
+
+.player-rank-xl {
+	width: 60px;
+	height: 60px;
+}
+
+.access-denied {
+	font-weight: bolder;
+	animation: blink 2s steps(5, start) infinite;
+	-webkit-animation: blink 2s steps(5, start) infinite;
+}
+
+@keyframes blink {
+to {
+	visibility: hidden;
+	}
+}
+@-webkit-keyframes blink {
+to {
+	visibility: hidden;
+	}
+}
+
+.team-flag {
+	opacity: 0.8
+}
+
+.team-flag-xl {
+	width: 160px;
+}
+
+.flag-submit {
+    width: 100%;
+}
+/* status */
+
+.panels-status h3, .panels-status .progress {
+	margin: 0;
+}
+
+.panels-status .panel-success h3 { color: rgb(50, 180, 50) };
+.panels-status .panel-danger h3 { color: rgb(180, 50, 50) };
+
+/* HIGHLIGHT */
+
+.hl.num { color:#b07e00; }
+.hl.esc { color:#ff00ff; }
+.hl.str { color:#bf0303; }
+.hl.pps { color:#818100; }
+.hl.slc { color:#838183; font-style:italic; }
+.hl.com { color:#838183; font-style:italic; }
+.hl.ppc { color:#008200; }
+.hl.opt { color:#000000; }
+.hl.ipl { color:#0057ae; }
+.hl.lin { color:#555555; }
+.hl.kwa { color:#000000; font-weight:bold; }
+.hl.kwb { color:#0057ae; }
+.hl.kwc { color:#000000; font-weight:bold; }
+.hl.kwd { color:#010181; }
+
