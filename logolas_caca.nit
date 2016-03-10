@@ -17,7 +17,7 @@ class Interp
 	do
 		x = (c.width / 2).to_f
 		y = (c.height / 2).to_f
-		print "center {x}, y{y}"
+		#print "center {x}, y{y}"
 	end
 
 	redef fun visit(node) do

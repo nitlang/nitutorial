@@ -75,7 +75,7 @@ result="tmpls/$tmpl.res"
 
 export CACA_DRIVER=ncurses
 export CACA_GEOMETRY=40x20
-export TERM=xterm
+export TERM=dumb
 
 case "$tmpl" in
 	01_hello)
