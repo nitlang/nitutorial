@@ -103,7 +103,9 @@ case "$tmpl" in
 		;;
 
 	04_function)
-		: # TODO
+		file="hanoi.nit"
+		default &&
+		echo "UQAM{FLAG$tmpl}"
 		;;
 
 	05_collection)
