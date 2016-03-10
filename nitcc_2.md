@@ -6,6 +6,7 @@ You can look around in the generated files.
 Let's focus on the Logolas format.
 
 There is an abstract cursor (atùin in Elfish) that start at (0,0) and that is oriented to the right (because elves like to be right).
+The x axis goes to the left and the y axis goes to the bottom.
 
 There is 3 basic types of commands:
 
@@ -41,9 +42,9 @@ import logolas_lexer
 
 ~~~
 $ ./logolas maenas.logolas
-(1,-3)
+(1,3)
 $ ./logolas elen.logolas
-(10,3)
+(10,-3)
 $ ./logolas bar.logolas
 (4,0)
 ~~~

@@ -34,7 +34,7 @@ redef class Ncmd_fw
 		var n = n_n.value.to_f
 		var a = v.angle.to_f / 6.0 * pi
 		v.x += (a.cos * n).to_i
-		v.y += (a.sin * n).to_i
+		v.y -= (a.sin * n).to_i
 	end
 end
 

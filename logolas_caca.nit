@@ -7,16 +7,16 @@ import caca
 class Interp
 	super Visitor
 
-	var x = 0.0
-	var y = 0.0
-	var angle: Float = 0.0 # pi / 2.0
+	var x = 0
+	var y = 0
+	var angle = 0
 
 	var c: CacaCanvas
 
 	init
 	do
-		x = (c.width / 2).to_f
-		y = (c.height / 2).to_f
+		x = c.width / 2
+		y = c.height / 2
 		#print "center {x}, y{y}"
 	end
 
@@ -43,27 +43,26 @@ redef class Ncmd_fw
 		var ox = v.x
 		var oy = v.y
 		var n = n_n.value.to_f
-		v.x += v.angle.cos * n
-		v.y += v.angle.sin * n
-		v.x = v.x.round
-		v.y = v.y.round
-		v.c.draw_line(ox.to_i, oy.to_i, v.x.to_i, v.y.to_i)
+		var a = v.angle.to_f / 6.0 * pi
+		v.x += (a.cos * n).to_i
+		v.y -= (a.sin * n).to_i
+		v.c.draw_line(ox, oy, v.x, v.y)
 	end
 end
 
 redef class Ncmd_tl
 	redef fun accept(v)
 	do
-		var n = n_n.value.to_f
-		v.angle += n / 6.0 * pi
+		var n = n_n.value
+		v.angle += n
 	end
 end
 
 redef class Ncmd_tr
 	redef fun accept(v)
 	do
-		var n = n_n.value.to_f
-		v.angle -= n / 6.0 * pi
+		var n = n_n.value
+		v.angle -= n
 	end
 end
 
