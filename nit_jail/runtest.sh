@@ -86,7 +86,7 @@ case "$tmpl" in
 		;;
 
 	03_control)
-		file="fibonnaci.nit"
+		file="fibonaci.nit"
 		default &&
 		echo "UQAM{FLAG$tmpl}"
 		;;
