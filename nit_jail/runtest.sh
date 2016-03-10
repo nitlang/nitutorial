@@ -31,8 +31,6 @@ bin=`basename "$prog" .nit`
 {
 tmpl=`get_template "$arg"` >/dev/null
 }
-echo "$arg -> $tmpl"
-exit 0
 
 if [ -z "$tmpl" ]; then
 	echo >&2 "Cannot identify the mission you tried to solve. Please use the template provided as is without any modification."
