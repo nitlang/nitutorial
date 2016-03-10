@@ -1,4 +1,4 @@
-module caca is pkgconfig "caca"
+module caca is pkgconfig
 
 `{
 #include <caca.h>

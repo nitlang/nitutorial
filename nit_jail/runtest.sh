@@ -4,7 +4,7 @@
 # "$1" is the program tested.
 
 #set -e
-set -x
+#set -x
 
 
 # Return the template source file associated to the input file ($1)
@@ -31,10 +31,15 @@ bin=`basename "$prog" .nit`
 {
 tmpl=`get_template "$arg"` >/dev/null
 }
+echo "$arg -> $tmpl"
+exit 0
+
 if [ -z "$tmpl" ]; then
 	echo >&2 "Cannot identify the mission you tried to solve. Please use the template provided as is without any modification."
 	exit 1
 fi
+
+
 
 function compile()
 {

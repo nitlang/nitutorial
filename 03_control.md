@@ -62,7 +62,7 @@ Confidential information: fib(0) = 0; fib(1) = 1; fib(n) = fib(n-1) + fib(n-2)
 ### Template to Use
 
 ~~~nit
-module fibonnacci
+module fibonacci
 
 var limit = 500
 

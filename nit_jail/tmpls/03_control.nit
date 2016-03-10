@@ -1,4 +1,4 @@
-module fibonnacci
+module fibonacci
 
 var limit = 500
 

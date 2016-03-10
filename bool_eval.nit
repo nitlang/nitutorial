@@ -1,3 +1,5 @@
+module bool_eval
+
 import bool_visitor
 
 redef class BoolExpr

@@ -2,13 +2,9 @@ module deep_first
 
 fun deep_first(a: Object): Object
 do
-	# Here, `a` isa `Object`
-        while a isa Collection[Object] do
-		# Here, `a` is a `Collection[Object]`
-                a = a.first
-		# Here, `a` is a `Object` again
-        end
-        return a 
+	# CHANGE BELLOW
+	... a isa Collection[Object] ...
+	# CHANGE ABOVE
 end
 
 var one = 1

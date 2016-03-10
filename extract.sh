@@ -10,12 +10,12 @@ for i in "$@"; do
 	perl -ne 'print if(/~~~/ ... /~~~/);' "$i" | tac | sed -ne '1,/~~~/{/~~~/!p}' | tac > "$res"
 
 	if ! grep -q '^\s*# CODE HERE\s*$' "$tmpl"; then
-		if ! grep -q '\s*# CHANGE BELLOW\s*$' "$tmpl"; then
+		if ! grep -q '^\s*# CHANGE BELLOW\s*$' "$tmpl"; then
 			echo "$i: no CODE HERE nor CHANGE BELLOW"
 			rm "$tmpl" "$res"
 			continue
 		fi
-		if ! grep -q '^# CHANGE ABOVE$' "$tmpl"; then
+		if ! grep -q '^\s*# CHANGE ABOVE\s*$' "$tmpl"; then
 			echo "$i: no CHANGE ABOVE"
 			rm "$tmpl" "$res"
 			continue
