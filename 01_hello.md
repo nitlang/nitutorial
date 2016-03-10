@@ -37,7 +37,16 @@ I print therefore I am.
 * Difficulty: tutorial
 
 To prove your achievement, send us a program that output the traditional *Hello, World!*
-A template is provided below.
+
+### Template to Use
+
+For each mission, a template is provided.
+
+* You must use it.
+* You can only write your code in the specified places
+* You cannot modify other parts.
+
+The template of the mission is the following one:
 
 ~~~nit
 module hello
@@ -46,7 +55,7 @@ print "Something, Something!"
 # CHANGE ABOVE
 ~~~
 
-Expected output
+### Expected output
 
 ~~~
 Hello, World!

@@ -78,7 +78,7 @@ Define two variables, `a_string` and `an_integer` initialized respectively to `"
 ~~~nit
 module value
 
-# CHANGE BELLOW
+# CHANGE BELOW
 var a_string = ?
 var an_integer = ?
 # CHANGE ABOVE
