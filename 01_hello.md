@@ -12,6 +12,10 @@ For instance, `print` is a function that print something at the screen.
 print "I print therefore I am."
 ~~~
 
+<pre class="hl">print <span class="hl str">&quot;I print therefore I am.&quot;</span>
+</pre>
+
+
 In fact, `print` is a method from the core library that accepts any kind of objects and prints a human-readable form to standard output; but these concepts will be introduced later.
 
 Nit can be both compiled (with `nitc`) or interpreted (with `nit`).
@@ -54,6 +58,12 @@ module hello
 print "Something, Something!"
 # CHANGE ABOVE
 ~~~
+
+<pre class="hl"><span class="hl kwa">module</span> hello
+<span class="hl slc"># CHANGE BELOW</span>
+print <span class="hl str">&quot;Something, Something&quot;</span>
+<span class="hl slc"># CHANGE ABOVE</span>
+</pre>
 
 ### Expected output
 
