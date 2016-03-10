@@ -53,13 +53,18 @@ function run()
 	echo "" | timeout -k 3 3 firejail --quiet --profile=jail.profile --private="$bin" --quiet $@ | grep -v Firejail | cat -v >> "$output"
 }
 
+function checkres()
+{
+	diff -u "$result" "$output" --label expected --label output >&2
+}
+
 function default()
 {
 
 	mv "$arg" "$dir/$file"
 	compile "$file" &&
 	run ./`basename "$file" .nit` &&
-	diff -u "$result" "$output" >&2
+	checkres
 }
 
 bin="$dir/bin"
@@ -121,8 +126,9 @@ case "$tmpl" in
 		file="hacker.nit"
 		mv "$arg" "$dir/$file"
 		cp ../args.nit "$dir"
-		compile args.nit -m "$file"
-		diff -u "$result" "$output" >&2 &&
+		compile args.nit -m "$file" &&
+		run ./args &&
+		checkres &&
 		echo "UQAM{FLAG$tmpl}"
 		;;
 
@@ -151,7 +157,7 @@ case "$tmpl" in
 		run ./logolas maenas.logolas &&
 		run ./logolas elen.logolas &&
 		run ./logolas bar.logolas &&
-		diff -u "$result" "$output" >&2 &&
+		checkres &&
 		echo "UQAM{FLAG$tmpl}"
 		;;
 
@@ -167,7 +173,7 @@ case "$tmpl" in
 		cp ../caca_client.nit "$dir" 
 		compile "caca_client.nit" &&
 		run "caca_client" &&
-		diff -u "$result" "$output" >&2 &&
+		checkres &&
 		echo "UQAM{FLAG$tmpl}"
 		;;
 
@@ -180,7 +186,7 @@ case "$tmpl" in
 		run ./logolas_caca maenas.logolas &&
 		run ./logolas_caca elen.logolas &&
 		run ./logolas_caca bar.logolas &&
-		diff -u "$result" "$output" >&2 &&
+		checkres &&
 		echo "UQAM{FLAG$tmpl}"
 		;;
 
