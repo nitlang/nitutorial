@@ -15,6 +15,14 @@ var d: Int = null # NOT OK
 # Type Error: expected `Int`, got `null`.
 ~~~
 
+<pre class="hl"><span class="hl kwa">var</span> a<span class="hl opt">:</span> <span class="hl kwb">Int</span> <span class="hl opt">=</span> <span class="hl num">10</span>            <span class="hl slc"># OK</span>
+<span class="hl kwa">var</span> b<span class="hl opt">:</span> <span class="hl kwa">nullable</span> <span class="hl kwb">Int</span> <span class="hl opt">=</span> <span class="hl num">1</span>    <span class="hl slc"># OK</span>
+<span class="hl kwa">var</span> c<span class="hl opt">:</span> <span class="hl kwa">nullable</span> <span class="hl kwb">Int</span> <span class="hl opt">=</span> <span class="hl kwa">null</span> <span class="hl slc"># OK</span>
+<span class="hl kwa">var</span> d<span class="hl opt">:</span> <span class="hl kwb">Int</span> <span class="hl opt">=</span> <span class="hl kwa">null</span> <span class="hl slc"># NOT OK</span>
+<span class="hl slc">#            ^</span>
+<span class="hl slc"># Type Error: expected `Int`, got `null`.</span>
+</pre>
+
 The static type system controls that `null` does not propagate to unwanted places.
 Therefore, it is required to test the value of expressions that might be null.
 
@@ -40,6 +48,18 @@ print double(null)
 print double(10)
 ~~~
 
+<pre class="hl"><span class="hl slc"># Double a number; if null is given 0 is returned.</span>
+<span class="hl kwa">fun</span> double<span class="hl opt">(</span>value<span class="hl opt">:</span> <span class="hl kwa">nullable</span> <span class="hl kwb">Int</span><span class="hl opt">):</span> <span class="hl kwb">Int</span>
+<span class="hl kwa">do</span>
+	<span class="hl slc"># Here, `value` is a `nullable Int`</span>
+	<span class="hl kwa">if</span> value <span class="hl opt">==</span> <span class="hl kwa">null then return</span> <span class="hl num">0</span>
+	<span class="hl slc"># Here, `value` is a `Int`. It's *adaptive typing!</span>
+	<span class="hl kwa">return</span> value <span class="hl opt">*</span> <span class="hl num">2</span>
+<span class="hl kwa">end</span>
+print double<span class="hl opt">(</span><span class="hl kwa">null</span><span class="hl opt">)</span>
+print double<span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">)</span>
+</pre>
+
 Adaptive typing correctly handle independent assignments.
 
 ~~~nit
@@ -58,6 +78,20 @@ print triple(null)
 print triple(10)
 ~~~
 
+<pre class="hl"><span class="hl kwa">fun</span> triple<span class="hl opt">(</span>value<span class="hl opt">:</span> <span class="hl kwa">nullable</span> <span class="hl kwb">Int</span><span class="hl opt">):</span> <span class="hl kwb">Int</span>
+<span class="hl kwa">do</span>
+	<span class="hl slc"># Here `value` is a `nullable Int`</span>
+	<span class="hl kwa">if</span> value <span class="hl opt">==</span> <span class="hl kwa">null then</span>
+		<span class="hl slc"># Here `value` is `null`</span>
+		value <span class="hl opt">=</span> <span class="hl num">0</span>
+		<span class="hl slc"># Here `value` is `Int`</span>
+	<span class="hl kwa">end</span> <span class="hl slc"># In the implicit and empty else, `value` is `Int`</span>
+	<span class="hl slc"># Here `value` is Int</span>
+	<span class="hl kwa">return</span> value <span class="hl opt">*</span> <span class="hl num">3</span>
+<span class="hl kwa">end</span>
+print triple<span class="hl opt">(</span><span class="hl kwa">null</span><span class="hl opt">)</span>
+print triple<span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">)</span>
+</pre>
 
 The `isa` keyword can be used to test the dynamic type of an expression.
 If the expression is a variable, then its static type can be adapted.
@@ -87,6 +121,30 @@ what_it_is "five"
 what_it_is true
 ~~~
 
+<pre class="hl"><span class="hl kwa">fun</span> what_it_is<span class="hl opt">(</span>value<span class="hl opt">:</span> <span class="hl kwa">nullable</span> <span class="hl kwb">Object</span><span class="hl opt">)</span>
+<span class="hl kwa">do</span>
+	<span class="hl slc"># `value` is a `nullable Object` that is the most general type is the type hierarchy of Nit.</span>
+	<span class="hl kwa">if</span> value <span class="hl opt">==</span> <span class="hl kwa">null then</span>
+		print <span class="hl str">&quot;It's null&quot;</span>
+		<span class="hl kwa">return</span>
+	<span class="hl kwa">end</span>
+	<span class="hl slc"># Now, `value` is a `Object` that is the root of the class hierarchy.</span>
+	<span class="hl kwa">if</span> value <span class="hl kwa">isa</span> <span class="hl kwb">Int</span> <span class="hl kwa">then</span>
+		<span class="hl slc"># Now `value` is a `Int`.</span>
+		<span class="hl slc"># No need to cast, the static type is already adapted.</span>
+		print <span class="hl str">&quot;It's the integer</span> <span class="hl esc">{value}</span><span class="hl str">, the one that follows</span> <span class="hl esc">{value-1}</span><span class="hl str">.&quot;</span>
+		<span class="hl slc"># Because `value` is an `Int`, `value-1` is accepted</span>
+	<span class="hl kwa">else if</span> value <span class="hl kwa">isa</span> <span class="hl kwb">String</span> <span class="hl kwa">then</span>
+		print <span class="hl str">&quot;It's the string `</span><span class="hl esc">{value}</span><span class="hl str">`, made of</span> <span class="hl esc">{value.length}</span> <span class="hl str">charcters.&quot;</span>
+	<span class="hl kwa">else</span>
+		print <span class="hl str">&quot;Whathever it is, I do not care.&quot;</span>
+	<span class="hl kwa">end</span>
+<span class="hl kwa">end</span>
+what_it_is <span class="hl num">5</span>
+what_it_is <span class="hl str">&quot;five&quot;</span>
+what_it_is <span class="hl kwa">true</span>
+</pre>
+
 ## Mission
 
 Implements a method `deep_first` that returns the first non-collection element of an object.
@@ -112,6 +170,25 @@ print deep_first(ranges)
 var arrays = [[2,3],[3,4]]
 print deep_first(arrays)
 ~~~
+
+<pre class="hl"><span class="hl kwa">module</span> deep_first
+
+<span class="hl kwa">fun</span> deep_first<span class="hl opt">(</span>a<span class="hl opt">:</span> <span class="hl kwb">Object</span><span class="hl opt">):</span> <span class="hl kwb">Object</span>
+<span class="hl kwa">do</span>
+	<span class="hl slc"># CHANGE BELOW</span>
+	<span class="hl opt">...</span> a <span class="hl kwa">isa</span> <span class="hl kwb">Collection</span><span class="hl opt">[</span><span class="hl kwb">Object</span><span class="hl opt">] ...</span>
+	<span class="hl slc"># CHANGE ABOVE</span>
+<span class="hl kwa">end</span>
+
+<span class="hl kwa">var</span> one <span class="hl opt">=</span> <span class="hl num">1</span>
+print deep_first<span class="hl opt">(</span>one<span class="hl opt">)</span>
+<span class="hl kwa">var</span> range <span class="hl opt">= [</span><span class="hl num">1</span><span class="hl opt">.</span><span class="hl num">.5</span><span class="hl opt">]</span>
+print deep_first<span class="hl opt">(</span>range<span class="hl opt">)</span>
+<span class="hl kwa">var</span> ranges <span class="hl opt">= [</span>range<span class="hl opt">, [</span><span class="hl num">3</span><span class="hl opt">.</span><span class="hl num">.8</span><span class="hl opt">]]</span>
+print deep_first<span class="hl opt">(</span>ranges<span class="hl opt">)</span>
+<span class="hl kwa">var</span> arrays <span class="hl opt">= [[</span><span class="hl num">2</span><span class="hl opt">,</span><span class="hl num">3</span><span class="hl opt">],[</span><span class="hl num">3</span><span class="hl opt">,</span><span class="hl num">4</span><span class="hl opt">]]</span>
+print deep_first<span class="hl opt">(</span>arrays<span class="hl opt">)</span>
+</pre>
 
 ### Expected Outputs
 
