@@ -1,6 +1,6 @@
 # Hello, World!
 
-We found an ancient language called Nit. Historian say that if was the most popular language of the pre-alpha era.
+We found an ancient language called Nit. Historians say that if was the most popular language of the pre-alpha era.
 A lot of dome life systems and security protocol are based on Nit. This may be our chance!
 We need you to master this language!
 
@@ -12,7 +12,7 @@ For instance, `print` is a function that print something at the screen.
 print "I print therefore I am."
 ~~~
 
-In fact, `print` is a method from the core library that accepts any kind of objects and prints a human-readable form to standard output; but these concept will be introduced latter.
+In fact, `print` is a method from the core library that accepts any kind of objects and prints a human-readable form to standard output; but these concepts will be introduced later.
 
 Nit can be both compiled (with `nitc`) or interpreted (with `nit`).
 Moreover, if the source code has the right permissions and starts with `#!/usr/bin/env nit`, it can be executed directly.
@@ -37,11 +37,11 @@ I print therefore I am.
 * Difficulty: tutorial
 
 To prove your achievement, send us a program that output the traditional *Hello, World!*
-A template is provided bellow.
+A template is provided below.
 
 ~~~nit
 module hello
-# CHANGE BELLOW
+# CHANGE BELOW
 print "Something, Something!"
 # CHANGE ABOVE
 ~~~
