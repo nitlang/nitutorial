@@ -3,9 +3,7 @@
 # This script is executed by the node engine
 # "$1" is the program tested.
 
-#set -e
 #set -x
-
 
 # Return the template source file associated to the input file ($1)
 # If no template match, return the empty string.
@@ -50,7 +48,10 @@ function compile()
 
 function run()
 {
-	echo "" | timeout -k 3 3 firejail --quiet --profile=jail.profile --private="$bin" --quiet $@ | grep -v Firejail | cat -v >> "$output"
+	echo "" | timeout -k 3 3 firejail --quiet --profile=jail.profile --private="$bin" --quiet "$@" |& grep -v Firejail | cat -v >> "$output"
+	#echo "" | timeout -k 3 3 firejail --quiet --private="$bin" --quiet "$@" |& grep -v Firejail | cat -v >> "$output"
+	#echo "" | firejail --quiet --private="$bin" --quiet "$@" |& grep -v Firejail | cat -v >> "$output"
+	#echo "" | sh -c "cd $bin; $*" |& cat -v >> "$output"
 }
 
 function checkres()
@@ -63,7 +64,7 @@ function default()
 
 	mv "$arg" "$dir/$file"
 	compile "$file" &&
-	run ./`basename "$file" .nit` &&
+	run "./`basename "$file" .nit`" &&
 	checkres
 }
 
@@ -74,6 +75,7 @@ result="tmpls/$tmpl.res"
 
 export CACA_DRIVER=ncurses
 export CACA_GEOMETRY=40x20
+export TERM=xterm
 
 case "$tmpl" in
 	01_hello)
@@ -89,7 +91,7 @@ case "$tmpl" in
 		;;
 
 	03_control)
-		file="fibonaci.nit"
+		file="fibonacci.nit"
 		default &&
 		echo "UQAM{FLAG$tmpl}"
 		;;
@@ -127,7 +129,7 @@ case "$tmpl" in
 		mv "$arg" "$dir/$file"
 		cp ../args.nit "$dir"
 		compile args.nit -m "$file" &&
-		run ./args &&
+		run ./args some arguments &&
 		checkres &&
 		echo "UQAM{FLAG$tmpl}"
 		;;
@@ -138,7 +140,8 @@ case "$tmpl" in
 		echo "UQAM{FLAG$tmpl}"
 		;;
 	
-	bool_eval)
+	visitor)
+		cp ../bool_visitor.nit ../bool_expr.nit "$dir"
 		file="bool_eval.nit"
 		default &&
 		echo "UQAM{FLAG$tmpl}"
@@ -151,8 +154,8 @@ case "$tmpl" in
 	nitcc_2)
 		file="logolas.nit"
 		mv "$arg" "$dir/$file"
-		cp ../logolas_parser.nit ../logolas_test_parser.nit ../logolas_lexer.nit "$dir" 
-		cp ../*.logolas "$bin" 
+		cp ../logolas_parser.nit ../logolas_test_parser.nit ../logolas_lexer.nit "$dir"
+		cp ../*.logolas "$bin"
 		compile "$file" &&
 		run ./logolas maenas.logolas &&
 		run ./logolas elen.logolas &&
@@ -162,7 +165,7 @@ case "$tmpl" in
 		;;
 
 	ffi)
-		file="fnmatch"
+		file="fnmatch.nit"
 		default &&
 		echo "UQAM{FLAG$tmpl}"
 		;;
@@ -170,9 +173,9 @@ case "$tmpl" in
 	ffi2)
 		file="caca.nit"
 		mv "$arg" "$dir/$file"
-		cp ../caca_client.nit "$dir" 
+		cp ../caca_client.nit "$dir"
 		compile "caca_client.nit" &&
-		run "caca_client" &&
+		run "./caca_client" &&
 		checkres &&
 		echo "UQAM{FLAG$tmpl}"
 		;;
@@ -180,8 +183,8 @@ case "$tmpl" in
 	logolas_caca)
 		file="logolas_caca.nit"
 		mv "$arg" "$dir/$file"
-		cp ../logolas_parser.nit ../logolas_test_parser.nit ../logolas_lexer.nit ../caca.nit "$dir" 
-		cp ../*.logolas "$bin" 
+		cp ../logolas_parser.nit ../logolas_test_parser.nit ../logolas_lexer.nit ../caca.nit "$dir"
+		cp ../*.logolas "$bin"
 		compile "$file" &&
 		run ./logolas_caca maenas.logolas &&
 		run ./logolas_caca elen.logolas &&

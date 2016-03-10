@@ -7,3 +7,6 @@ install-deps:
 
 run:
 	npm start
+
+test:
+	./localtest.sh ../*.nit

@@ -1,16 +1,7 @@
-
-all: logolas
-
-logolas: logolas.nit logolas_test_parser.nit
-	nitc logolas.nit
-
-
-logolas_test_parser.nit: logolas.sablecc
+all:
+	# The `diff` program is used to associacte an input to a mission
+	nitc diff.nit --dir nit_jail
+	# Generated nitcc file are required for logolas missions
 	nitcc logolas.sablecc
-
-run: logolas
-	./logolas e1.logolas
-
-tests: logolas
-	echo "" | CACA_DRIVER=ncurses ./logolas e1.logolas > e1.out
-	cat -v e1.out
+	# The devel files are required for caca missions
+	sudo apt-get install libcaca-dev

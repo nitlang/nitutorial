@@ -1,8 +1,8 @@
 module value
 
 # CHANGE BELLOW
-var a_string = "x"
-var an_integer = 5
+var a_string = "ten"
+var an_integer = 10
 # CHANGE ABOVE
 
 print "a_string! {a_string + "!"}"

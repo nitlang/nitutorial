@@ -1,9 +1,9 @@
 # Nit exec profile
 
-include /etc/firejail/disable-mgmt.inc
-include /etc/firejail/disable-secret.inc
-include /etc/firejail/disable-common.inc
-#include /etc/firejail/disable-terminals.inc
+include /usr/local/etc/firejail/disable-mgmt.inc
+include /usr/local/etc/firejail/disable-secret.inc
+include /usr/local/etc/firejail/disable-common.inc
+include /usr/local/etc/firejail/disable-terminals.inc
 
 blacklist ${HOME}/.pki/nssdb
 blacklist ${HOME}/.lastpass
