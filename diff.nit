@@ -12,7 +12,7 @@ for tli in [0..tmpl.length[ do
 
 	# Get template line
 	var tl = tmpl[tli].trim
-	if tl == "# CHANGE BELLOW" then break
+	if tl == "# CHANGE BELOW" then break
 	if tl == "# CODE HERE" then break
 	if tl.is_empty then continue
 

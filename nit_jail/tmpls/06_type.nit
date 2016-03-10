@@ -2,7 +2,7 @@ module deep_first
 
 fun deep_first(a: Object): Object
 do
-	# CHANGE BELLOW
+	# CHANGE BELOW
 	... a isa Collection[Object] ...
 	# CHANGE ABOVE
 end
