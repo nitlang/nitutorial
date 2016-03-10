@@ -18,7 +18,8 @@ router.post('/', function(req, res, next) {
 	var tmpdir = "out/" + new Date().getTime();
 	child_process.execSync('mkdir -p ' + tmpdir);
 	fs.writeFileSync(tmpdir + '/prog.nit', ucode, 'utf-8');
-	//child_process.exec('nitc --no-color ' + tmpdir + '/prog.nit -o ' + tmpdir + '/prog', {timeout: 5000},
+	// TODO load answer
+	var answer = "LOL"
 	child_process.exec('./runtest.sh ' + tmpdir + '/prog.nit', {timeout: 5000},
 	  function(err, stdout, stderr) {
 		  try {
@@ -26,7 +27,7 @@ router.post('/', function(req, res, next) {
 		  } catch(e) {
 			  console.log(e);
 		  }
-		  res.render('index', {code: code, err: err, stdout: stdout, stderr: stderr});
+		  res.render('index', {code: code, err: err, stdout: stdout, stderr: stderr, answer: answer});
 	  });
 });
 
