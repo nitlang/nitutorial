@@ -55,7 +55,7 @@ for i in [0..5[ do print i # 0 1 2 3 4 (5 is excluded)
 
 * Difficulty: easy
 
-White a loop that computes the first Fibonacci number above a given limit. 
+White a loop that computes the first Fibonacci numbers bellow a given limit.
 
 Confidential information: fib(0) = 0; fib(1) = 1; fib(n) = fib(n-1) + fib(n-2)
 
@@ -70,12 +70,23 @@ var prev = 0
 var n = 1
 
 # CODE HERE
-
-print "The first Fibonacci number > {limit} is {n}."
 ~~~
 
 ### Expected output
 
 ~~~
-The first Fibonacci number > 500 is 610.
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
 ~~~
