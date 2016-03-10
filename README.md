@@ -3,7 +3,7 @@
 * [01_hello.md]
 * [02_value.md]
 * [03_control.md] puis [03b_control.md]
-* [04_function.md] TODO
+* [04_function.md]
 * [05_collection.md]
 * [06_type.md]
 * [class.md]
