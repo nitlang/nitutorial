@@ -65,7 +65,14 @@ function default()
 	mv "$arg" "$dir/$file"
 	compile "$file" &&
 	run "./`basename "$file" .nit`" &&
-	checkres
+	checkres &&
+	flag
+}
+
+function flag()
+{
+	md5=(`md5sum "../$file"`)
+	echo "UQAM{$md5}"
 }
 
 bin="$dir/bin"
@@ -80,50 +87,42 @@ export TERM=dumb
 case "$tmpl" in
 	01_hello)
 		file="hello.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 
 	02_value)
 		file="value.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 
 	03_control)
 		file="fibonacci.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 
 	03b_control)
 		file="prime.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 
 	04_function)
 		file="hanoi.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 
 	05_collection)
 		file="filter.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 
 	06_type)
 		file="deep_first.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 	
 	class)
 		file="helloo.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default 
 		;;
 	
 	module)
@@ -133,20 +132,18 @@ case "$tmpl" in
 		compile args.nit -m "$file" &&
 		run ./args some arguments &&
 		checkres &&
-		echo "UQAM{FLAG$tmpl}"
+		flag
 		;;
 
 	refinement)
 		file="crypto13.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 	
 	visitor)
 		cp ../bool_visitor.nit ../bool_expr.nit "$dir"
 		file="bool_eval.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 
 	nitcc)
@@ -163,13 +160,12 @@ case "$tmpl" in
 		run ./logolas elen.logolas &&
 		run ./logolas bar.logolas &&
 		checkres &&
-		echo "UQAM{FLAG$tmpl}"
+		flag
 		;;
 
 	ffi)
 		file="fnmatch.nit"
-		default &&
-		echo "UQAM{FLAG$tmpl}"
+		default
 		;;
 	
 	ffi2)
@@ -179,7 +175,7 @@ case "$tmpl" in
 		compile "caca_client.nit" &&
 		run "./caca_client" &&
 		checkres &&
-		echo "UQAM{FLAG$tmpl}"
+		flag
 		;;
 
 	logolas_caca)
@@ -192,7 +188,7 @@ case "$tmpl" in
 		run ./logolas_caca elen.logolas &&
 		run ./logolas_caca bar.logolas &&
 		checkres &&
-		echo "UQAM{FLAG$tmpl}"
+		flag
 		;;
 
 	*)
