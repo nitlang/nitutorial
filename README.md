@@ -1,5 +1,3 @@
-
-
 ## Tutorial (tronc principal)
 
 * [01_hello.md]
@@ -28,6 +26,9 @@ neccesite les deux branches
 
 * [legolas_caca.md]
 
+## Pour configurer le serveur
+
+voir le README dans nit_jail
 
 ## Idees en vrac mais pas le temps :/
 
