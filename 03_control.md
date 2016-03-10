@@ -10,6 +10,9 @@ The one-liner flavor needs a single statement just after the control.
 if level > 9000 then print "It's over 9000!!!"
 ~~~
 
+<pre class="hl"><span class="hl kwa">if</span> level &gt; <span class="hl num">9000</span> <span class="hl kwa">then</span> print <span class="hl str">&quot;It's over 9000!!&quot;</span>
+</pre>
+
 The multi-line flavor has a line-return after the control but requires a `end` keyword.
 
 ~~~nit
@@ -19,6 +22,11 @@ if level > 9000 then
 end
 ~~~
 
+<pre class="hl"><span class="hl kwa">if</span> level &gt; <span class="hl num">9000</span> <span class="hl kwa">then</span>
+	print <span class="hl str">&quot;It's over 9000!!&quot;</span>
+	print <span class="hl str">&quot;- What! Nine thousand!&quot;</span>
+<span class="hl kwa">end</span>
+</pre>
 
 The `if` control accepts an optional `else` block.
 
@@ -32,6 +40,14 @@ else
 end
 ~~~
 
+<pre class="hl"><span class="hl kwa">if</span> level &gt; <span class="hl num">9000</span> <span class="hl kwa">then</span>
+	print <span class="hl str">&quot;It's over 9000!!&quot;</span>
+<span class="hl kwa">else if</span> level &gt; <span class="hl num">1000</span> <span class="hl kwa">then</span>
+	print <span class="hl str">&quot;It's over 1000...&quot;</span>
+<span class="hl kwa">else</span>
+	print <span class="hl str">&quot;It's not impressive.&quot;</span>
+<span class="hl kwa">end</span>
+</pre>
 
 `while` loops are also available:
 
@@ -44,12 +60,23 @@ end
 print "1 last bottle on the wall..."
 ~~~
 
+<pre class="hl"><span class="hl kwa">var</span> i <span class="hl opt">=</span> <span class="hl num">999</span>
+<span class="hl kwa">while</span> i &gt; <span class="hl num">1</span> <span class="hl kwa">do</span>
+	print <span class="hl str">&quot;</span><span class="hl esc">{i}</span> <span class="hl str">bottles on the wall...&quot;</span>
+	i <span class="hl opt">-=</span> <span class="hl num">1</span>
+<span class="hl kwa">end</span>
+print <span class="hl str">&quot;1 last bottle on the wall...&quot;</span>
+</pre>
+
 `for` is an improved `while` that iterates on collections.
 They will be shown in a latter mission, for the moment, we will use them to iterate on ranges of integers.
 
 ~~~nit
 for i in [0..5[ do print i # 0 1 2 3 4 (5 is excluded)
 ~~~
+
+<pre class="hl"><span class="hl kwa">for</span> i <span class="hl kwa">in</span> <span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">.</span><span class="hl num">.5</span><span class="hl opt">[</span> <span class="hl kwa">do</span> print i <span class="hl slc"># 0 1 2 3 4 (5 is excluded)</span>
+</pre>
 
 ## Mission
 
@@ -71,6 +98,16 @@ var n = 1
 
 # CODE HERE
 ~~~
+
+<pre class="hl"><span class="hl kwa">module</span> fibonacci
+
+<span class="hl kwa">var</span> limit <span class="hl opt">=</span> <span class="hl num">500</span>
+
+<span class="hl kwa">var</span> prev <span class="hl opt">=</span> <span class="hl num">0</span>
+<span class="hl kwa">var</span> n <span class="hl opt">=</span> <span class="hl num">1</span>
+
+<span class="hl slc"># CODE HERE</span>
+</pre>
 
 ### Expected output
 
