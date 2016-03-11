@@ -388,3 +388,7 @@ to {
 .hl.kwb { color:#0057ae; }
 .hl.kwc { color:#ffffff; font-weight:bold; }
 .hl.kwd { color:#010181; }
+
+textarea {
+   font-family: monospace
+}
