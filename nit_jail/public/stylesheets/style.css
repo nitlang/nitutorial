@@ -381,11 +381,10 @@ to {
 .hl.slc { color:#838183; font-style:italic; }
 .hl.com { color:#838183; font-style:italic; }
 .hl.ppc { color:#008200; }
-.hl.opt { color:#000000; }
+.hl.opt { color:#ffffff; }
 .hl.ipl { color:#0057ae; }
 .hl.lin { color:#555555; }
-.hl.kwa { color:#000000; font-weight:bold; }
+.hl.kwa { color:#ffffff; font-weight:bold; }
 .hl.kwb { color:#0057ae; }
-.hl.kwc { color:#000000; font-weight:bold; }
+.hl.kwc { color:#ffffff; font-weight:bold; }
 .hl.kwd { color:#010181; }
-
