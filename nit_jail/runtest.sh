@@ -8,6 +8,7 @@ dir=`dirname "$arg"`
 prog=`basename "$arg"`
 bin=`basename "$prog" .nit`
 
+exec 18>"$dir/log"
 exec 19>"$dir/trace"
 export BASH_XTRACEFD=19
 set -x
@@ -16,10 +17,12 @@ set -x
 # If no template match, return the empty string.
 function get_template()
 {
+	echo "## $FUNCNAME $@" >&18
 	input="$1"
 	for tmpl in tmpls/*.nit; do
-		# echo "--- $tmpl ---"
-		./diff "$tmpl" "$input" 2>/dev/null || continue
+		echo "--- $tmpl ---" >&18
+		./diff "$tmpl" "$input" 2>&18 || continue
+		echo "Found" >&18
 		echo `basename "$tmpl" .nit`
 		return 0
 	done
@@ -29,19 +32,18 @@ function get_template()
 }
 
 
-{
-tmpl=`get_template "$arg"` >/dev/null
-}
+tmpl=`get_template "$arg"`
 
 if [ -z "$tmpl" ]; then
+	echo >&18 "No template"
 	echo >&2 "Cannot identify the mission you tried to solve. Please use the template provided as is without any modification."
 	exit 1
 fi
 
 
-
 function compile()
 {
+	echo >&18 "## $FUNCNAME $@"
 	cd "$dir"
 	nitc --no-color "$@" --dir bin
 	res=$?
@@ -51,6 +53,7 @@ function compile()
 
 function run()
 {
+	echo >&18 "## $FUNCNAME $@"
 	( echo "" | timeout -k 3 3 firejail --quiet --profile=jail.profile --private="$bin" --quiet "$@" |& grep -v Firejail ) |& cat -v >> "$output"
 	#echo "" | timeout -k 3 3 firejail --quiet --private="$bin" --quiet "$@" |& grep -v Firejail | cat -v >> "$output"
 	#echo "" | firejail --quiet --private="$bin" --quiet "$@" |& grep -v Firejail | cat -v >> "$output"
@@ -59,12 +62,13 @@ function run()
 
 function checkres()
 {
+	echo >&18 "## $FUNCNAME $@ ; $result $output"
 	diff -u "$result" "$output" --label expected --label output >&2
 }
 
 function default()
 {
-
+	echo >&18 "## $FUNCNAME $@"
 	mv "$arg" "$dir/$file"
 	compile "$file" &&
 	run "./`basename "$file" .nit`" &&
@@ -74,9 +78,11 @@ function default()
 
 function flag()
 {
+	echo >&18 "## $FUNCNAME $@"
 	md5=(`md5sum "../$file"`)
 	echo "UQAM{$md5}"
 	highlight --fragment -S nit --enclose-pre "../$file" > "$dir/answer.html"
+	echo >&18 "FLAG $tmpl/$file UQAM{$md5}"
 }
 
 bin="$dir/bin"
@@ -197,6 +203,7 @@ case "$tmpl" in
 
 	*)
 		echo >&2 "FATAL ERROR: cannot process mission '$tmpl'"
+		echo >&18 "## FATAL ERROR for $tmpl"
 		exit 1
 		;;
 esac
