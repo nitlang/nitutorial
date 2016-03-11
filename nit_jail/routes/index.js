@@ -18,6 +18,12 @@ router.post('/', function(req, res, next) {
 	var tmpdir = "out/" + new Date().getTime();
 	child_process.execSync('mkdir -p ' + tmpdir);
 	fs.writeFileSync(tmpdir + '/prog.nit', ucode, 'utf-8');
+
+	var clientinfo = '';
+	clientinfo += 'IP: ' + req.connection.remoteAddress + '\n';
+	clientinfo += JSON.stringify(req.headers, null, 2) + '\n';
+	fs.writeFileSync(tmpdir + '/clientinfo', clientinfo, 'utf-8');
+
 	child_process.exec('./runtest.sh ' + tmpdir + '/prog.nit', {timeout: 5000},
 	  function(err, stdout, stderr) {
 		  try {
