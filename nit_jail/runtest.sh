@@ -73,6 +73,7 @@ function flag()
 {
 	md5=(`md5sum "../$file"`)
 	echo "UQAM{$md5}"
+	highlight --fragment -S nit --enclose-pre "../$file" > "$dir/answer.html"
 }
 
 bin="$dir/bin"
