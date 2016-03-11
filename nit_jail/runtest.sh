@@ -3,7 +3,14 @@
 # This script is executed by the node engine
 # "$1" is the program tested.
 
-#set -x
+arg="$1"
+dir=`dirname "$arg"`
+prog=`basename "$arg"`
+bin=`basename "$prog" .nit`
+
+exec 19>"$dir/trace"
+export BASH_XTRACEFD=19
+set -x
 
 # Return the template source file associated to the input file ($1)
 # If no template match, return the empty string.
@@ -21,10 +28,6 @@ function get_template()
 	return 1
 }
 
-arg="$1"
-dir=`dirname "$arg"`
-prog=`basename "$arg"`
-bin=`basename "$prog" .nit`
 
 {
 tmpl=`get_template "$arg"` >/dev/null
