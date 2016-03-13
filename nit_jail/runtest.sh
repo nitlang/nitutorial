@@ -92,7 +92,7 @@ function bis()
 
 function fool()
 {
-	echo >&2 "Are you trying to fool us? cp $output $result"
+	echo >&2 "Are you trying to fool us?"
 	exit 1
 }
 
