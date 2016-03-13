@@ -98,10 +98,10 @@ function fool()
 
 function defaultbis()
 {
-	default &&
-	bis &&
-	sed -i.bak -e "$@" "$dir/$file" &&
-	default 2> /dev/null || fool &&
+	default || return 1
+	bis
+	sed -i.bak -e "$@" "$dir/$file"
+	default 2> /dev/null || fool
 	flag
 }
 
@@ -192,7 +192,7 @@ case "$tmpl" in
 		run ./logolas maenas.logolas &&
 		run ./logolas elen.logolas &&
 		run ./logolas bar.logolas &&
-		checkres &&
+		checkres || exit 1
 		{ bis && run ./logolas bar2.logolas && checkres; } 2>/dev/null || fool &&
 		flag
 		;;
@@ -221,7 +221,7 @@ case "$tmpl" in
 		run ./logolas_caca maenas.logolas &&
 		run ./logolas_caca elen.logolas &&
 		run ./logolas_caca bar.logolas &&
-		checkres &&
+		checkres || exit 1
 		{ bis && run ./logolas_caca bar2.logolas && checkres; } 2>/dev/null || fool &&
 		flag
 		;;
