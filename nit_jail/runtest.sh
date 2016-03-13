@@ -72,8 +72,7 @@ function default()
 	mv "$arg" "$dir/$file"
 	compile "$file" &&
 	run "./`basename "$file" .nit`" &&
-	checkres &&
-	flag
+	checkres
 }
 
 function flag()
@@ -84,6 +83,28 @@ function flag()
 	highlight --fragment -S nit --enclose-pre "../$file" > "$dir/answer.html"
 	echo >&18 "FLAG $tmpl/$file UQAM{$md5}"
 }
+
+function bis()
+{
+	result="$result.bis"
+	output="$output.bis"
+}
+
+function fool()
+{
+	echo >&2 "Are you trying to fool us? cp $output $result"
+	exit 1
+}
+
+function defaultbis()
+{
+	default &&
+	bis &&
+	sed -i.bak -e "$@" "$dir/$file" &&
+	default 2> /dev/null || fool &&
+	flag
+}
+
 
 bin="$dir/bin"
 mkdir -p "$bin"
@@ -97,42 +118,44 @@ export TERM=dumb
 case "$tmpl" in
 	01_hello)
 		file="hello.nit"
-		default
+		default &&
+		flag
 		;;
 
 	02_value)
 		file="value.nit"
-		default
+		default &&
+		flag
 		;;
 
 	03_control)
 		file="fibonacci.nit"
-		default
+		defaultbis 's/limit = 500/limit = 5000/'
 		;;
 
 	03b_control)
 		file="prime.nit"
-		default
+		defaultbis 's/limit = 20/limit = 33/'
 		;;
 
 	04_function)
 		file="hanoi.nit"
-		default
+		defaultbis 's/hanoi(5)/hanoi(7)/'
 		;;
 
 	05_collection)
 		file="filter.nit"
-		default
+		defaultbis 's/filter(\[35..45\])/filter([1..100])/'
 		;;
 
 	06_type)
 		file="deep_first.nit"
-		default
+		defaultbis 's/one = 1/one = [[[["a"]]]]/'
 		;;
 	
 	class)
 		file="helloo.nit"
-		default 
+		defaultbis 's/new Hello("World")/new Hello("Dome")/'
 		;;
 	
 	module)
@@ -147,13 +170,13 @@ case "$tmpl" in
 
 	refinement)
 		file="crypto13.nit"
-		default
+		defaultbis 's/print "Hello, World!"/print "DomeIsLife"/'
 		;;
 	
 	visitor)
 		cp ../bool_visitor.nit ../bool_expr.nit "$dir"
 		file="bool_eval.nit"
-		default
+		defaultbis 's/new BoolTrue/new BoolFalse/'
 		;;
 
 	nitcc)
@@ -170,12 +193,13 @@ case "$tmpl" in
 		run ./logolas elen.logolas &&
 		run ./logolas bar.logolas &&
 		checkres &&
+		{ bis && run ./logolas bar2.logolas && checkres; } 2>/dev/null || fool &&
 		flag
 		;;
 
 	ffi)
 		file="fnmatch.nit"
-		default
+		defaultbis 's/mpire.nit/mpire.zip/'
 		;;
 	
 	ffi2)
@@ -198,6 +222,7 @@ case "$tmpl" in
 		run ./logolas_caca elen.logolas &&
 		run ./logolas_caca bar.logolas &&
 		checkres &&
+		{ bis && run ./logolas_caca bar2.logolas && checkres; } 2>/dev/null || fool &&
 		flag
 		;;
 
