@@ -38,7 +38,7 @@ Moreover, if the source code has the right permissions and starts with `#!/usr/b
 
 To prove your achievement, send us a program that outputs the traditional *Hello, World!*
 
-For all the missions in this track, you must submit your Nit source code on [http://nit.csgames.org:8090/](http://nit.csgames.org:8090/).
+For all the missions in this track, you must submit your Nit source code on [http://test.nitlanguage.org/](http://test.nitlanguage.org/).
 
 ### Template to Use
 
