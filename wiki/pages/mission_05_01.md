@@ -1,6 +1,6 @@
 # Collections and for loops
 
-In Nit there is various kinds of collections.
+In Nit there are various kinds of collections.
 They are used to manipulate finite groups of objects.
 
 Because Nit is statically typed, the type of the elements of a collection is statically known.
@@ -13,7 +13,7 @@ print a<span class="hl opt">.</span>first <span class="hl slc"># 2</span>
 print a<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]</span> <span class="hl slc"># 5</span>
 </pre>
 
-Array is a mutable data-structure and elements can be added of removed.
+Array is a mutable data-structure and elements can be added or removed.
 
 <pre class="hl">print a<span class="hl opt">.</span>pop <span class="hl slc"># 5</span>
 print a     <span class="hl slc"># [2,3]</span>
@@ -23,7 +23,7 @@ print a     <span class="hl slc"># [2,3,50]</span>
 
 Another useful collection is Range. It is used to store intervals.
 
-There is two kind of ranges, the closed ones and the semi-open one (we just say open even if it is not mathematically accurate).
+There are two kind of ranges, closed ones and semi-open ones (we'll just refer to them as open even if it is not mathematically accurate).
 
 <pre class="hl"><span class="hl kwa">var</span> closed <span class="hl opt">= [</span><span class="hl num">10</span><span class="hl opt">.</span><span class="hl num">.15</span><span class="hl opt">]</span>
 print closed <span class="hl slc"># [10,11,12,13,14,15]</span>
@@ -32,7 +32,7 @@ print open <span class="hl slc"># [10,11,12,13,14]</span>
 </pre>
 
 The most common operation on collections is to iterate on them.
-The `for` control structure just do that.
+The `for` control structure does just that.
 
 <pre class="hl"><span class="hl kwa">for</span> i <span class="hl kwa">in</span> <span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">.</span><span class="hl num">.5</span><span class="hl opt">[</span> <span class="hl kwa">do</span> print i <span class="hl slc"># 0 1 2 3 4</span>
 <span class="hl kwa">for</span> i <span class="hl kwa">in</span> <span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">]</span> <span class="hl kwa">do</span> print i <span class="hl slc"># 2 3 5</span>

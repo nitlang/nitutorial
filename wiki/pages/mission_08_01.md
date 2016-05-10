@@ -1,7 +1,7 @@
 # Modules
 
 Nit source files are called *modules*.
-A module can define classes and methods, can import classes and methods of imported modules and can refine them.
+A module can define classes and methods, import classes and methods from other modules and refine them.
 
 The keyword `module` can be used to declare a module. It is optional but when given, the module name must match the filename.
 The `module` declaration is also used to attach the documentation and to attach specific module annotations.
@@ -50,7 +50,7 @@ Moreover, importation of modules can be done and configured at link-time (with `
 
 * Difficulty: easy
 
-Hera a program that prints the command line arguments separated by a comma.
+Here a program that prints the command line arguments separated by a comma.
 
 <pre class="hl">print args<span class="hl opt">.</span>join<span class="hl opt">(</span><span class="hl str">&quot;, &quot;</span><span class="hl opt">)</span>
 </pre>

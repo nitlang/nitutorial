@@ -1,9 +1,9 @@
 # Visitor Design Pattern
 
-The well-known Visitor Design Pattern allow to dissociate the traversal of an heterogeneous, thus it allows to implement specific behavior and computation on such a tree without having to update or change the existing code.
+The well-known Visitor Design Pattern allows for dissociation between the traversal of an heterogeneous data structure and the various computations done on this data structure.
 
-The standard way is to engineer the visited classes with a spacial callback `accept` that will invoke a specific `visit_*` method of an abstract Visitor.
-Adding a new behavior and computation is done in specific subclasses of the abstract visitor. 
+The standard way is to engineer the visited classes with a special `accept` callback that will invoke a specific `visit_*` method of an abstract Visitor.
+Adding new behaviours and computations is done in specific subclasses of the abstract visitor. 
 
 This standard way has some issues:
 
@@ -13,9 +13,9 @@ This standard way has some issues:
 * there is a specific and independent method `visit_*` method for each concrete data-class, without a nice OO way to factorize them
 * most of the implemented behavior is the sole responsibility of the data-class and implementing them in a concrete visitor is not optimal (bad responsibility assignment, bad coupling)
 
-Concern-oriented programming and class refinement in Nit helps to solve most of these issues.
+Concern-oriented programming and class refinement in Nit help solve most of these issues.
 
-So, let the following classes used to represent a boolean expression.
+So, let us consider the following classes used to represent a boolean expression.
 
 <!--
 ~~~nit
@@ -182,7 +182,7 @@ end
 
 You can see that the visitor can be created after the data-classes without altering the original module.
 
-Let's now implement some visitor that count the number of binary operations in an expression.
+Let's now implement some visitor that counts the number of binary operations in an expression.
 
 <!--
 ~~~
@@ -274,7 +274,7 @@ print v<span class="hl opt">.</span>count<span class="hl opt">(</span>e2<span cl
 
 * Difficulty: medium
 
-Implement an evaluator that can visit and transform one of our Boolean expression to a standard Bool value `true` or `false`.
+Implement an evaluator that can visit and transform one of our Boolean expressions to a standard Bool value `true` or `false`.
 
 ### Template to Use
 

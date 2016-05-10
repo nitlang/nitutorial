@@ -2,7 +2,7 @@
 
 Nit is a statically typed language that aims at elegance, simplicity and intuitiveness.
 
-For instance, `print` is a function that print something at the screen.
+For instance, `print` is a function that prints something at the screen.
 
 <pre class="hl">print <span class="hl str">&quot;I print therefore I am.&quot;</span>
 </pre>
@@ -10,8 +10,8 @@ For instance, `print` is a function that print something at the screen.
 
 In fact, `print` is a method from the core library that accepts any kind of objects and prints a human-readable form to standard output; but these concepts will be introduced later.
 
-Nit can be both compiled (with `nitc`) or interpreted (with `nit`).
-Moreover, if the source code has the right permissions and starts with `#!/usr/bin/env nit`, it can be executed directly.
+Nit can be either compiled (with `nitc`) or interpreted (with `nit`).
+Bonus: if the source code has the right permissions and starts with `#!/usr/bin/env nit`, it can be executed directly.
 
 	$ cat rene.nit
 	#!/usr/bin/env nit

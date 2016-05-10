@@ -1,16 +1,16 @@
 # Wrapping Libraries
 
-Nit can provide an automatic wrapping of extern data structures as classes.
+Nit can provide automatic wrapping of extern data structures as classes.
 Theses classes are declared `extern`.
 
-The goal of extern classes is to describe data that live in the foreign language.
-Like a normal class, an extern class can define, inherit and redefine methods.
+The goal of extern classes is to describe data that lives in the foreign language.
+Like a normal class, an extern class can define, inherit and refine methods.
 Methods can even be foreign or pure Nit.
-The only restriction is that extern class cannot have attributes (data lives in the foreign world) and can only specializes interfaces or other extern classes.
+The only restriction is that extern classes cannot have attributes (data lives in the foreign world) and can only specialize interfaces or other extern classes.
 
-The advantage of extern class is that the values are no more opaque in extern methods.
+The advantage of extern classes is that values are no more opaque in extern methods.
 When an extern class is used to type a parameter or the return value of an extern method,
-then the value is directly accessible.
+the value is then directly accessible.
 
 The foreign type is indicated after the class name with the now traditional back-quoted curly-bracket notation.
 
@@ -83,11 +83,11 @@ dir.closedir
 <span class="hl str">dir.closedir</span>
 </pre>
 
-Some included foreign code may require specific flag to compile them.
+Some included foreign code may require specific compilation flags.
 These flags can be declared in the module declaration.
 
 Most of the time for C and C++ foreign code, the tool `pkg-config` can be used to correctly get these flags.
-`nitc` simplify the process for you.
+`nitc` simplifies the process for you.
 
 <!--
 module curl is pkgconfig
@@ -104,7 +104,7 @@ module curl is pkgconfig
 
 * Difficulty: advanced
 
-Write a simple wrapper around [libcaca](http://caca.zoy.org/doxygen/libcaca/caca_8h.html) that include the following data types and functions:
+Write a simple wrapper around [libcaca](http://caca.zoy.org/doxygen/libcaca/caca_8h.html) that includes the following data types and functions:
 
 You need to wrap the following:
 
@@ -114,7 +114,7 @@ You need to wrap the following:
 * `caca_canvas_t` as `CacaCanvas`
 * `caca_put_str` as `CacaCanvas::put`
 
-Also add a `CadaDisplay::quit` that waits for any input event then destroy the display.
+Also add a `CadaDisplay::quit` that waits for any input event, then destroys the display.
 
 Here an example of a working client.
 
