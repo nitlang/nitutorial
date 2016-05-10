@@ -2,7 +2,7 @@
 
 * Difficulty: advanced
 
-Your mission is to combine your `caca` library and your `loglas` parser to render logolas vectorial image on a terminal.
+Your mission is to combine your `caca` library and your `logolas` parser to render a logolas vectorial image on a terminal.
 
 The `caca` library is
 
@@ -65,9 +65,9 @@ end
 <span class="hl str">end</span>
 </pre>
 
-Implement a program that takes a legolas file as an argument and draw things.
+Implement a program that takes a logolas file as an argument to draw things.
 
-Note that the atùin (the cursor) should starts at the middle of the canevas.
+Note that the atùin (the cursor) should start at the middle of the canvas.
 
 ## Template To Use
 
@@ -97,4 +97,4 @@ import caca
     $ ./logolas_caca elen.logolas
     # show a glowing and inspiring star
     $ ./logolas_caca bar.logolas
-    # render a peaceful and warm house
+    # renders a peaceful and warm house

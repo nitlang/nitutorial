@@ -9,7 +9,7 @@ The one-liner flavor needs a single statement just after the control.
 <pre class="hl"><span class="hl kwa">if</span> level &gt; <span class="hl num">9000</span> <span class="hl kwa">then</span> print <span class="hl str">&quot;It's over 9000!!&quot;</span>
 </pre>
 
-The multi-line flavor has a line-return after the control but requires a `end` keyword.
+The multi-line flavor has a line-return after the control but requires an `end` keyword.
 
 <pre class="hl"><span class="hl kwa">if</span> level &gt; <span class="hl num">9000</span> <span class="hl kwa">then</span>
 	print <span class="hl str">&quot;It's over 9000!!&quot;</span>
@@ -48,7 +48,7 @@ They will be shown in a later mission, for the moment, we will use them to itera
 
 * Difficulty: medium
 
-White a loop that computes the first Fibonacci numbers bellow a given limit.
+Write a loop that computes the first Fibonacci numbers below a given limit.
 
 Confidential information: fib(0) = 0; fib(1) = 1; fib(n) = fib(n-1) + fib(n-2)
 

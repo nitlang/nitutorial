@@ -1,8 +1,8 @@
 # Class Refinement
 
-One of the best feature of Nit is refinement.
+One of the best features of Nit is refinement.
 
-Refinement is modifying an existing methods and classes in a statistically and controlled way:
+Refinement is modifying existing methods and classes in a statically controlled way:
 
 * New methods
 * New attributes
@@ -22,7 +22,7 @@ The keyword `redef` is used to declare that a class definition is a refinement.
 print <span class="hl num">6</span><span class="hl opt">.</span>fib <span class="hl slc"># 8</span>
 </pre>
 
-Refinement is
+Refinement is akin to
 
 * Aspect-Oriented Programming,
 
@@ -34,10 +34,10 @@ Refinement is
 
 
 In a refinement of a method, the previous definition is accessible with the `super` keyword.
-This allows refiners to add additional behavior before and/or after the original behavior, or to change it completely.
+This allows refiners to add additional behavior before and/or after the original behavior, or change it completely.
 
-For instance, the core method `run` is the one that control the main execution of a program.
-It is often refined to add additional behavior before and after the main program. 
+For instance, the core method `run` controls the main execution of a program.
+It is often refined to add additional behavior before or after the main program. 
 
 As with classes, the keyword `redef`
 
@@ -58,7 +58,7 @@ Will output
 	End program
 
 
-By default `super` will reuse all the original parameters, you can provide new one anyway.
+By default `super` will reuse all the original parameters, you can provide new ones anyway.
 The types of the parameters and the return type are 
 
 <pre class="hl"><span class="hl kwa">redef fun</span> print<span class="hl opt">(</span>value<span class="hl opt">)</span>
@@ -77,7 +77,7 @@ In order to encrypt future communication, refine the `print` method to print any
 
 Hint1: do not infinitely recurse
 
-Hint2: the module `crypto` provide a `rot(13)` method that can be applied on strings.
+Hint2: the module `crypto` provides a `rot` method that can be applied on strings.
 
 ### Template to Use
 

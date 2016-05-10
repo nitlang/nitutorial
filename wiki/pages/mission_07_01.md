@@ -25,9 +25,9 @@ print f<span class="hl opt">.</span>is_about_cyclign <span class="hl slc"># fals
 ## Attributes and Constructors
 
 Attributes (aka fields, slots or instance variables) are declared with `var`.
-Their behavior differs slightly from most other languages and is strongly linked with how constructors are specified.
+Their behaviour slightly differs from the majority of other languages and is strongly linked with how constructors are specified.
 
-* no need to define accessors: attributes comes by default with a getter and a setter, the underling attribute is accessed internally.
+* no need to define accessors: attributes come by default with a getter and a setter, the underlying attribute is accessed internally.
 * no need to define constructors: attributes without a default value need one when the object is allocated
 * an optional parameter-less special method (declared with the keyword `init`) is called to finish the construction
 
@@ -60,7 +60,7 @@ Subclasses inherit the attributes and the constructor behavior and `init` are au
 * Difficulty: easy
 
 Write a class `Hello` with an attribute `what: String`, and a method `say: String` that prints `"Hello, {what}!"`.
-Write a class `Goodby` with an attribute `hello: Hello`, and a method `say` that reply goodby.
+Write a class `Goodbye` with an attribute `hello: Hello`, and a method `say` that reply goodby.
 
 ### Template do Use
 

@@ -1,6 +1,6 @@
 # Foreign Function Interface
 
-The Nit Foreign Function Interface (FFI) allows to nest foreign code within a Nit source file.
+The Nit Foreign Function Interface (FFI) allows the nesting of foreign code within a Nit source file.
 Current supported languages are C, C++, Java (used mainly for android support) and Objective C (used mainly for iOS support).
 
 Common use cases of the FFI is to optimize a method or to wrap existing system or third-party libraries.
@@ -37,7 +37,7 @@ Advanced features of the Nit FFI include:
 
 * inclusion of global declarations
 * automatic conversion between some Nit and foreign types
-* declaration of callback functions to call Nit method from within the foreign code.
+* declaration of callback functions to call Nit methods from within the foreign code.
 
 The following example shows how can the C function `strchr` be used to search a character in a string.
 

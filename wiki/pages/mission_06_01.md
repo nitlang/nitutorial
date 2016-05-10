@@ -1,8 +1,8 @@
 # Nullable and Adaptive Typing
 
-One of the specific feature of Nit the management of the `null` value and how the static types of expressions and variables are computed.
+One of the specific features of Nit is the management of `null` values and how static types of expressions and variables are computed.
 
-Unlike most other languages, the `null` value is statically controlled in Nit, therefore it cannot occurs randomly.
+Unlike most other languages, the `null` value is statically controlled in Nit, therefore it cannot occur randomly.
 
 To accept `null`, the static type must be extended with the `nullable` keyword.
 
@@ -14,16 +14,16 @@ To accept `null`, the static type must be extended with the `nullable` keyword.
 <span class="hl slc"># Type Error: expected `Int`, got `null`.</span>
 </pre>
 
-The static type system controls that `null` does not propagate to unwanted places.
+The static type system ensures that `null` values do not propagate to unwanted places.
 Therefore, it is required to test the value of expressions that might be null.
 
 To control the correction of programs, the static type system of Nit features *adaptive typing*.
 Adaptive typing is used to track the static types of variables and expressions.
-With adaptive typing, the static type of variables might changes according to:
+With adaptive typing, the static type of variables might change according to:
 
 * its assignments
 * its comparisons to null (with `==` and `!=`)
-* its type checks (with `isa` seen bellow)
+* its type checks (with `isa` seen below)
 * the control flow of the program (`if`, `while`, `break`, `and`, etc.)
 
 <pre class="hl"><span class="hl slc"># Double a number; if null is given 0 is returned.</span>

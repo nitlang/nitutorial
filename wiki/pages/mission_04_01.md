@@ -35,9 +35,9 @@ print presentation
 
 ## Variadic Function
 
-A parameter can old a variable number of arguments, its type has to be be suffixed by the ellipsis `...`
+A parameter can hold a variable number of arguments, its type has to be suffixed by the ellipsis `...`
 
-On the call side, one or more parameter can be given, on the method side, the static type of the parameter is an Array.
+On the call side, one or more parameters can be given, on the method side, the static type of the parameter is an Array.
 
 <pre class="hl"><span class="hl kwa">fun</span> present_all<span class="hl opt">(</span>names<span class="hl opt">:</span> <span class="hl kwb">String</span><span class="hl opt">...):</span> <span class="hl kwb">String</span>
 <span class="hl kwa">do</span>

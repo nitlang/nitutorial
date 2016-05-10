@@ -1,20 +1,20 @@
 # Visit of the Fangorn Forest
 
-One of the point of `nitcc` is to generate the classes of the AST and visit methods.
-You can look around in the generated files.
+The main use of `nitcc` is the generation of the classes, AST and visit methods.
+Take a look around the generated files for more insight on how it works.
 
 Let's focus on the Logolas format.
 
-There is an abstract cursor (atùin in Elfish) that start at (0,0) and that is oriented to the right (because elves like to be right).
-The x axis goes to the left and the y axis goes to the bottom.
+There is an abstract cursor (atùin in Elvish) that starts at (0,0) and is oriented to the right (because elves like to be right).
+The x axis is oriented left and the y axis is oriented towards the bottom.
 
-There is 3 basic types of commands:
+There are 3 basic command types:
 
 * forward (`⭡`) is used to advance in the current direction, the distance is given by the following number (from 1 to 12).
   Because elves like purity, the final position must be rounded to the nearest integer for x and y. It means that between commands, the atùin is always at an integer position.
 * turn left (`⮢`) and right (`⮣`) change the current direction.
-  The angle is given from 1 to 12 like in a clock (3 means a right angle).
-* sequence enclosed between `𝄆` and `𝄇` are repeated a given number of times indicated after the closing `𝄇`.
+  The angle is given from 1 to 12, much like a clock (3 means a 90° angle).
+* sequences enclosed between `𝄆` and `𝄇` are repeated a given number of times indicated after the closing `𝄇`.
   Note that `Ⅴ` repetitions means that the sequence must be executed 6 times.
 
 ## Mission

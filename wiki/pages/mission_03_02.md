@@ -10,7 +10,7 @@
 <span class="hl slc"># output 0 1 3 4</span>
 </pre>
 
-Two other special control structure are the `do` and the `loop`.
+Two other special control structures are the `do` and the `loop`.
 
 `do` is mainly used to scope local variables. It is also used to bound a `break`.
 
@@ -38,7 +38,7 @@ print <span class="hl str">&quot;There was</span> <span class="hl esc">{nb}</spa
 
 * Difficulty: medium
 
-Finish the program that test the primality of some numbers.
+Finish the program that tests the primality of some numbers.
 
 ### Template to Use
 

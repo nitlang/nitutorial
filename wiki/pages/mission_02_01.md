@@ -18,7 +18,7 @@ i <span class="hl opt">=</span> <span class="hl num">5</span>
 print i <span class="hl opt">+</span> <span class="hl num">1</span> <span class="hl slc"># Outputs 6</span>
 </pre>
 
-As you can see, even if Nit is statically typed, the language does not force the programmer to annotate most static types.
+As you can see, although Nit is statically typed, the language does not force the programmer to annotate most static types.
 The static type system automatically associates `i` with the static type `Int`, the static type is then used to check that `+ 1` is legal on `i`.
 
 For instance, the type system will prevent a tired programmer to add Booleans:
