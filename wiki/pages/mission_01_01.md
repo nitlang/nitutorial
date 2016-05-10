@@ -1,10 +1,6 @@
 # Hello, World!
 
-We found an ancient language called Nit. Historians say that it was the most popular language of the pre-alpha era.
-A lot of Dome life systems and security protocols are based on Nit. This may be our chance!
-We need you to master this language!
-
-According to apocryphal documentation, Nit is a statically typed language that aims at elegance, simplicity and intuitiveness.
+Nit is a statically typed language that aims at elegance, simplicity and intuitiveness.
 
 For instance, `print` is a function that print something at the screen.
 
@@ -34,11 +30,11 @@ Moreover, if the source code has the right permissions and starts with `#!/usr/b
 
 ## Mission
 
-* Difficulty: tutorial
+* Difficulty: basic
 
-To prove your achievement, send us a program that outputs the traditional *Hello, World!*
+To prove your achievement, develop the traditional *Hello, World!*
 
-For all the missions in this track, you must submit your Nit source code on [http://test.nitlanguage.org/](http://test.nitlanguage.org/).
+For all the missions in this tutorial, you can test your Nit source code on [http://test.nitlanguage.org/](http://test.nitlanguage.org/).
 
 ### Template to Use
 

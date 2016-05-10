@@ -1,8 +1,8 @@
 # Final Mission
 
-* Difficulty: hard
+* Difficulty: advanced
 
-Your mission is to combine your `caca` library and your `loglas` parser to render logocas vectorial image on a terminal.
+Your mission is to combine your `caca` library and your `loglas` parser to render logolas vectorial image on a terminal.
 
 The `caca` library is
 

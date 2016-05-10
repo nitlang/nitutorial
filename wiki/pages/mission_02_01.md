@@ -64,7 +64,7 @@ print <span class="hl str">&quot;&quot;&quot;&quot;quote&quot; and</span> <span 
 
 ## Mission
 
-* Difficulty: tutorial
+* Difficulty: basic
 
 Define two variables, `a_string` and `an_integer` initialized respectively to `"ten"` and `10`.
 

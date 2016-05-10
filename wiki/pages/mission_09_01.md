@@ -1,8 +1,8 @@
 # Visitor Design Pattern
 
-The well-known Visitor Design Pattern allow to dissociate the traversal of an heterogeneous , it thus allows to implement specific behavior and computation on such a tree without having to update or change the existing code.
+The well-known Visitor Design Pattern allow to dissociate the traversal of an heterogeneous, thus it allows to implement specific behavior and computation on such a tree without having to update or change the existing code.
 
-The standard way is to engineer the visited classes with a spacial callback `accept` that will invoke a specific `visit_*` method in an abstract Visitor.
+The standard way is to engineer the visited classes with a spacial callback `accept` that will invoke a specific `visit_*` method of an abstract Visitor.
 Adding a new behavior and computation is done in specific subclasses of the abstract visitor. 
 
 This standard way has some issues:

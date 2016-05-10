@@ -21,7 +21,7 @@ print <span class="hl str">&quot;Hello, World&quot;</span>
 print <span class="hl str">&quot;Goodbye, World&quot;</span>
 </pre>
 
-Nit promotes Concern-Oriented Development where each module ideally operates on a single concern.
+Nit promotes *Concern-Oriented Development* where each module ideally operates on a single concern.
 A Nit program is just a module that imports all the required concerns.
 
 Moreover, importation of modules can be done and configured at link-time (with `-m` and `-D`) to generate specific configurations of a product line.

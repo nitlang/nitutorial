@@ -2,7 +2,7 @@
 
 One of the specific feature of Nit the management of the `null` value and how the static types of expressions and variables are computed.
 
-Unlike most other languages in Nit, the `null` value is statically controlled, therefore it cannot occurs randomly.
+Unlike most other languages, the `null` value is statically controlled in Nit, therefore it cannot occurs randomly.
 
 To accept `null`, the static type must be extended with the `nullable` keyword.
 

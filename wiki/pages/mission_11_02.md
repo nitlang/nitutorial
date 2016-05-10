@@ -102,7 +102,7 @@ module curl is pkgconfig
 
 ## Mission
 
-* Difficulty: hard
+* Difficulty: advanced
 
 Write a simple wrapper around [libcaca](http://caca.zoy.org/doxygen/libcaca/caca_8h.html) that include the following data types and functions:
 
