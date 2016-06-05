@@ -19,9 +19,11 @@ function get_template()
 {
 	echo "## $FUNCNAME $@" >&18
 	input="$1"
-	for tmpl in tmpls/*.nit; do
-		echo "--- $tmpl ---" >&18
-		./diff "$tmpl" "$input" 2>&18 || continue
+	for tmpl in ../tracks/*; do
+		local f=$tmpl/template.nit
+		test -f "$f" || continue
+		echo "--- $f ---" >&18
+		./diff "$f" "$input" 2>&18 || continue
 		echo "Found" >&18
 		echo `basename "$tmpl" .nit`
 		return 0
@@ -86,7 +88,7 @@ function flag()
 
 function bis()
 {
-	result="$result.bis"
+	result="../tracks/$tmpl/result_bis.txt"
 	output="$output.bis"
 }
 
@@ -109,7 +111,7 @@ function defaultbis()
 bin="$dir/bin"
 mkdir -p "$bin"
 output="$dir/output"
-result="tmpls/$tmpl.res"
+result="../tracks/$tmpl/result.txt"
 
 export CACA_DRIVER=ncurses
 export CACA_GEOMETRY=40x20
