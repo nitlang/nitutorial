@@ -1,0 +1,26 @@
+// Elfish Vector Format.
+
+// Because Tengwar is still not yet offical Unicode in lastest vertion 800,
+// then other symbols are used.
+Grammar logolas;
+
+Lexer
+
+// Numbers are duodecimal and goes roman ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ
+n = 'Ⅰ' .. 'Ⅻ';
+
+blank = (' '|'\n')+;
+
+Parser
+
+Ignored blank;
+
+cmds = cmd*;
+cmd =
+	// Arrow are for movement (forward, turn left, turn right)
+	{fw:} '⭡' n |
+	{tl:} '⮢' n |
+	{tr:} '⮣' n |
+	// Musical repeat sign is for repetition
+	// Warning, *repeat once* means *do it twice*!
+	{rp:} '𝄆' cmds '𝄇' n;
