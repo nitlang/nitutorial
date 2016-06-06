@@ -210,7 +210,7 @@ class MissionHandler
 		div.div("panel panel-default").div("panel-body").add_raw_html t.subject.write_to_string
 
 		# Form
-		var form = div.open("form").attr("method", "post").div("panel panel-default").div("panel-body")
+		var form = div.open("form").attr("id", "form").attr("method", "post").div("panel panel-default").div("panel-body")
 		var code = null
 		if status != null then code = status.code
 		if code == null then code = t.template
@@ -257,7 +257,7 @@ class MissionHandler
 		var title_id = req.param("mission")
 		var t = tutorial.exercise_by_name.get_or_null(title_id)
 		if t == null then return
-		res.redirect "#code"
+		res.redirect "#form"
 
 		var session = req.session
 		if session == null then return
