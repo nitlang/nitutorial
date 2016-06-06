@@ -9,6 +9,7 @@
 # arguments:
 #
 #   "$1" is the program tested. Its directory will be used as the work directory.
+#   "$2", if any, is the name of the exercise (templ)
 
 usedocker=
 docker_image=nitutorial
@@ -50,8 +51,8 @@ function get_template()
 	return 1
 }
 
-
-tmpl=`get_template "$arg"`
+tmpl=$2
+test -z "$tmpl" && tmpl=`get_template "$arg"`
 
 if [ -z "$tmpl" ]; then
 	echo >&18 "No template"
