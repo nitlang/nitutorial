@@ -6,6 +6,7 @@ import template
 import html
 
 import tuto
+import diff
 
 # Common services to handle tutorial web request
 abstract class TutorialHandler
@@ -277,7 +278,7 @@ end
 # The current status of an exercise by a player.
 class ExerciseStatus
 	# The associated exercise.
-	var erercice: Exercise
+	var exercise: Exercise
 
 	# Is the exercise solved?
 	var solved = false
@@ -296,10 +297,9 @@ class ExerciseStatus
 	# Update the attributes.
 	fun tryit(code: nullable String) do
 		self.code = code
-		if code == null then return
-
 		self.result = null
 		self.answer = null
+		if code == null then return
 
 		# TODO
 		# * [_] log things
@@ -314,6 +314,13 @@ class ExerciseStatus
 		var prog = out / "prog.nit"
 		code.write_to_file(prog)
 		print "out: {prog}"
+
+		var d = tmpl_diff(exercise.template.split('\n'), code.split('\n'))
+		if d != null then
+			self.result = "Please use the template provided as is without any modification."
+			return
+		end
+
 		var res = system("cd ../nit_jail && ./runtest.sh out/{date}/prog.nit > out/{date}/result 2>&1")
 		var result = (out / "result").to_path.read_all
 		var answer = (out / "answer.html").to_path.read_all
