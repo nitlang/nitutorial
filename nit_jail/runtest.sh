@@ -56,6 +56,7 @@ tmpl=`get_template "$arg"`
 if [ -z "$tmpl" ]; then
 	echo >&18 "No template"
 	echo >&2 "Cannot identify the mission you tried to solve. Please use the template provided as is without any modification."
+	echo "bad template" > "$dir/done"
 	exit 1
 fi
 
@@ -113,10 +114,11 @@ function default()
 function flag()
 {
 	echo >&18 "## $FUNCNAME $@"
-	md5=(`md5sum "../$file"`)
-	echo "UQAM{$md5}"
+	echo "Congratulation"
 	highlight --fragment -S nit --enclose-pre "../$file" > "$dir/answer.html"
-	echo >&18 "FLAG $tmpl/$file UQAM{$md5}"
+	echo >&18 "Solved $tmpl/$file"
+	echo "solved" > "$dir/done"
+	exit 0
 }
 
 function bis()
@@ -128,6 +130,7 @@ function bis()
 function fool()
 {
 	echo >&2 "Are you trying to fool us?"
+	echo "fool" > "$dir/done"
 	exit 1
 }
 
@@ -227,7 +230,7 @@ case "$tmpl" in
 		run ./logolas maenas.logolas &&
 		run ./logolas elen.logolas &&
 		run ./logolas bar.logolas &&
-		checkres || exit 1
+		checkres || break
 		{ bis && run ./logolas bar2.logolas && checkres; } 2>/dev/null || fool &&
 		flag
 		;;
@@ -256,7 +259,7 @@ case "$tmpl" in
 		run ./logolas_caca maenas.logolas &&
 		run ./logolas_caca elen.logolas &&
 		run ./logolas_caca bar.logolas &&
-		checkres || exit 1
+		checkres || break
 		{ bis && run ./logolas_caca bar2.logolas && checkres; } 2>/dev/null || fool &&
 		flag
 		;;
@@ -264,6 +267,9 @@ case "$tmpl" in
 	*)
 		echo >&2 "FATAL ERROR: cannot process mission '$tmpl'"
 		echo >&18 "## FATAL ERROR for $tmpl"
+		echo "cannot process" > "$dir/done"
 		exit 1
 		;;
 esac
+
+echo "failed" > "$dir/done"
