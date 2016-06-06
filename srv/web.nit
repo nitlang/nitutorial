@@ -357,6 +357,11 @@ class Page
 	<meta charset='utf-8'/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
 	<link rel='stylesheet' href='/static/main.css'/>
+	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+	<link rel="stylesheet" href="codemirror/theme/blackboard.css">
+	<script src="codemirror/lib/codemirror.js"></script>
+	<Xscript src="codemirror/mode/css/css.js"></script>
+	<script src="codemirror/mode/nit/nit.js"></script>
 	<title>{{{title.html_escape}}}</title>
 </head>
 <body><div class="container">
@@ -375,7 +380,17 @@ class Page
 
 """
 		add content
-		add "</div></body></html>"
+		add "</div>"
+		add """
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		viewportMargin: Infinity,
+		theme: "blackboard"
+	});
+</script>
+"""
+		add "</body></html>"
 	end
 end
 
