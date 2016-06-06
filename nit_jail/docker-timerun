@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Execute a `docker run` with a timeout.
+
+timeout=$1
+shift
+
+if test -z "$*"; then
+	echo >&2 "Usage: docker-timerun timeout run-arguments"
+	exit 1
+fi
+
+
+function clean_up {
+	test -z "$cid" && return
+	# Force the removal of the container on exit
+	docker rm -f "$cid" >/dev/null
+}
+
+trap "clean_up; exit 1" SIGINT SIGTERM
+
+# Create a background execution
+cid=`docker run -d "$@"`
+# Timeout on wait
+ret=`timeout "$timeout" docker wait "$cid"`
+
+# Show the log 
+docker logs "$cid"
+
+if test -z "$ret"; then
+	# Timeout
+	docker stop "$cid" >/dev/null
+	echo "timeout"
+	ret=124
+fi
+
+clean_up
+exit "$ret"

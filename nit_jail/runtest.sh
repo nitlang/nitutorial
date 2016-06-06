@@ -1,7 +1,24 @@
 #!/bin/bash
 
 # This script is executed by the node engine
-# "$1" is the program tested.
+#
+# options:
+#
+#   -d: use docker instead of firejail
+#
+# arguments:
+#
+#   "$1" is the program tested. Its directory will be used as the work directory.
+
+usedocker=
+docker_image=nitutorial
+stop=false
+while [ $stop = false ]; do
+	case "$1" in
+		-d) usedocker=true; shift;;
+		*) stop=true
+	esac
+done
 
 arg="$1"
 dir=`dirname "$arg"`
@@ -42,24 +59,40 @@ if [ -z "$tmpl" ]; then
 	exit 1
 fi
 
+# $1: private directory (mounted and chdir as /user)
+# rest: command to execute
+function docker-run()
+{
+	local d=`readlink -f "$1"`
+	shift
+	./docker-timerun 10s --cap-drop=ALL --cap-add=DAC_OVERRIDE -v "$d:/user" -w "/user" "$docker_image" "$@"
+}
 
 function compile()
 {
 	echo >&18 "## $FUNCNAME $@"
-	cd "$dir"
-	nitc --no-color "$@" --dir bin
-	res=$?
-	cd "$OLDPWD"
-	test "$res" = "0"
+	if [ "$usedocker" = true ]; then
+		docker-run "$dir" nitc --no-color "$@" --dir bin
+	else
+		cd "$dir"
+		nitc --no-color "$@" --dir bin
+		res=$?
+		cd "$OLDPWD"
+		test "$res" = "0"
+	fi
 }
 
 function run()
 {
 	echo >&18 "## $FUNCNAME $@"
-	( echo "" | timeout -k 3 3 firejail --quiet --profile=jail.profile --private="$bin" --quiet "$@" |& grep -v Firejail ) |& cat -v >> "$output"
-	#echo "" | timeout -k 3 3 firejail --quiet --private="$bin" --quiet "$@" |& grep -v Firejail | cat -v >> "$output"
-	#echo "" | firejail --quiet --private="$bin" --quiet "$@" |& grep -v Firejail | cat -v >> "$output"
-	#echo "" | sh -c "cd $bin; $*" |& cat -v >> "$output"
+	if [ "$usedocker" = true ]; then
+		docker-run "$bin" "$@" |& cat -v >> "$output"
+	else
+		( echo "" | timeout -k 3 3 firejail --quiet --profile=jail.profile --private="$bin" --quiet "$@" |& grep -v Firejail ) |& cat -v >> "$output"
+		#echo "" | timeout -k 3 3 firejail --quiet --private="$bin" --quiet "$@" |& grep -v Firejail | cat -v >> "$output"
+		#echo "" | firejail --quiet --private="$bin" --quiet "$@" |& grep -v Firejail | cat -v >> "$output"
+		#echo "" | sh -c "cd $bin; $*" |& cat -v >> "$output"
+	fi
 }
 
 function checkres()
