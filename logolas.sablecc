@@ -1,7 +1,7 @@
-// Elfish Vector Format.
+// Elvish Vector Format.
 
-// Because Tengwar is still not yet offical Unicode in lastest vertion 800,
-// then other symbols are used.
+// Because Tengwar is still not offical in Unicode's latest version (9.0),
+// other symbols are used.
 Grammar logolas;
 
 Lexer
