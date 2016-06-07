@@ -7,6 +7,8 @@ import html
 
 import tuto
 import diff
+import nitc::parser
+import nitc::toolcontext
 
 # Common services to handle tutorial web request
 abstract class TutorialHandler
@@ -235,6 +237,18 @@ class MissionHandler
 				div2.div("panel-heading").open("h3").append "Error"
 				div2.div("panel-body").open("pre").append(result)
 			end
+
+			# Callback to display line-widgets
+			div.add_raw_html "<script>function nitmessage()\{"
+			for m in status.messages do
+				div.add_raw_html """
+	l = document.createElement("div");
+	l.className = "lint-error"
+	l.innerHTML = "<span class='glyphicon glyphicon-warning-sign lint-error-icon'></span> {{{m.text.html_escape}}}";
+	w = editor.addLineWidget({{{m.location.line_start-1}}}, l);
+"""
+			end
+			div.add_raw_html "\};</script>"
 		end
 
 		# Debug
@@ -264,11 +278,10 @@ class MissionHandler
 
 		print req.post_args.keys
 		var status = session.get_status(t)
-		if req.post_args.has_key("reset") then
-			status.code = null
-			return
-		end
 		var code = req.post_args.get_or_null("code")
+		if req.post_args.has_key("reset") then
+			code = null
+		end
 
 		status.tryit(code)
 		session.save
@@ -292,6 +305,9 @@ class ExerciseStatus
 	# The last answer (solution)
 	var answer: nullable String = null
 
+	# List of messages to display
+	var messages = new Array[Message]
+
 	# Try to validate the `code`.
 	#
 	# Update the attributes.
@@ -299,6 +315,7 @@ class ExerciseStatus
 		self.code = code
 		self.result = null
 		self.answer = null
+		self.messages.clear
 		if code == null then return
 
 		# TODO
@@ -318,6 +335,18 @@ class ExerciseStatus
 		var d = tmpl_diff(exercise.template.split('\n'), code.split('\n'))
 		if d != null then
 			self.result = "Please use the template provided as is without any modification."
+			return
+		end
+
+		var source = new SourceFile.from_string("", code)
+		var lexer = new nitc::Lexer(source)
+		var parser = new nitc::Parser(lexer)
+		var tree = parser.parse
+		var eof = tree.n_eof
+		if eof isa AError then
+			var message = new Message(eof.location, "syntax", eof.message, 2)
+			messages.add message
+			self.result = message.to_s
 			return
 		end
 
@@ -388,6 +417,7 @@ class Page
 		viewportMargin: Infinity,
 		theme: "blackboard"
 	});
+	nitmessage();
 </script>
 """
 		add "</body></html>"
