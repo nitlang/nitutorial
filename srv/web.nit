@@ -4,6 +4,7 @@ module web
 import popcorn
 import template
 import html
+import nitcorn::log
 
 import tuto
 import diff
@@ -385,7 +386,7 @@ class Page
 <head>
 	<meta charset='utf-8'/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
-	<link rel='stylesheet' href='/static/main.css'/>
+	<link rel='stylesheet' href='static/main.css'/>
 	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
 	<link rel="stylesheet" href="codemirror/theme/blackboard.css">
 	<script src="codemirror/lib/codemirror.js"></script>
